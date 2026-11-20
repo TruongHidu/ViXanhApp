@@ -896,6 +896,102 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Đang tải giao dịch'**
   String get txnLoadingLabel;
+
+  /// Lời chào trước 11 giờ
+  ///
+  /// In vi, this message translates to:
+  /// **'Chào buổi sáng'**
+  String get greetingMorning;
+
+  /// Lời chào từ 11 đến 18 giờ
+  ///
+  /// In vi, this message translates to:
+  /// **'Chào buổi chiều'**
+  String get greetingAfternoon;
+
+  /// Lời chào từ 18 giờ
+  ///
+  /// In vi, this message translates to:
+  /// **'Chào buổi tối'**
+  String get greetingEvening;
+
+  /// Lời chào kèm tên người dùng
+  ///
+  /// In vi, this message translates to:
+  /// **'{greeting}, {name}'**
+  String greetingWithName(String greeting, String name);
+
+  /// Nhãn thẻ tổng số dư
+  ///
+  /// In vi, this message translates to:
+  /// **'Tổng số dư'**
+  String get homeTotalBalance;
+
+  /// Tổng thu của tháng tài chính hiện tại
+  ///
+  /// In vi, this message translates to:
+  /// **'Thu tháng này'**
+  String get homeIncomeMonth;
+
+  /// Tổng chi của tháng tài chính hiện tại
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi tháng này'**
+  String get homeExpenseMonth;
+
+  /// Nút ẩn mọi số tiền trên màn hình
+  ///
+  /// In vi, this message translates to:
+  /// **'Ẩn số dư'**
+  String get hideBalance;
+
+  /// Nút hiện lại số tiền
+  ///
+  /// In vi, this message translates to:
+  /// **'Hiện số dư'**
+  String get showBalance;
+
+  /// Tiêu đề mục ví ở Tổng quan
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví của tôi'**
+  String get homeWallets;
+
+  /// Liên kết xem toàn bộ danh sách
+  ///
+  /// In vi, this message translates to:
+  /// **'Xem tất cả'**
+  String get seeAll;
+
+  /// Tiêu đề biểu đồ chi 7 ngày
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi tiêu 7 ngày qua'**
+  String get homeSpending7Days;
+
+  /// Tổng và trung bình chi của 7 ngày
+  ///
+  /// In vi, this message translates to:
+  /// **'Tổng {total} · trung bình {average}/ngày'**
+  String homeSpendingCaption(String total, String average);
+
+  /// Nhãn trợ năng cho một cột biểu đồ
+  ///
+  /// In vi, this message translates to:
+  /// **'{day}: chi {amount}'**
+  String homeChartDay(String day, String amount);
+
+  /// Tiêu đề mục giao dịch gần đây
+  ///
+  /// In vi, this message translates to:
+  /// **'Giao dịch gần đây'**
+  String get homeRecent;
+
+  /// Tên thứ viết tắt dưới cột biểu đồ (1 = thứ Hai … 7 = Chủ nhật)
+  ///
+  /// In vi, this message translates to:
+  /// **'{weekday, select, 1{T2} 2{T3} 3{T4} 4{T5} 5{T6} 6{T7} 7{CN} other{}}'**
+  String weekdayShort(String weekday);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

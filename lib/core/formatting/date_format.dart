@@ -51,6 +51,9 @@ final class DateLabelFormatter {
   String fullDateTime(DateTime at) =>
       DateFormat('HH:mm, EEEE dd/MM/yyyy', _locale).format(at.toLocal());
 
+  /// Ngày đầy đủ không kèm "Hôm nay": "Thứ Tư, 18/11/2026".
+  String longDate(DateTime at) => DateFormat('EEEE, dd/MM/yyyy', _locale).format(at.toLocal());
+
   /// Ngày ngắn "25/10" (dùng cho khoảng kỳ "25/10 – 24/11").
   String shortDate(DateTime at) => DateFormat('dd/MM', _locale).format(at.toLocal());
 }

@@ -22,10 +22,13 @@ void main() {
       // Chữ thường (< 18,66px đậm) cần ≥ 4,5:1 trên mọi nền nó thực sự nằm trên.
       final textPairs = <String, (Color, List<Color>)>{
         'textPrimary': (p.textPrimary, [p.background, p.card, p.surfaceAlt]),
-        'textSecondary': (p.textSecondary, [p.background, p.card, p.surfaceAlt]),
+        'textSecondary': (
+          p.textSecondary,
+          [p.background, p.card, p.surfaceAlt, p.primaryContainer],
+        ),
         'primaryText': (p.primaryText, [p.background, p.card]),
-        'incomeText': (p.incomeText, [p.background, p.card, p.incomeBg]),
-        'expenseText': (p.expenseText, [p.background, p.card, p.expenseBg]),
+        'incomeText': (p.incomeText, [p.background, p.card, p.incomeBg, p.primaryContainer]),
+        'expenseText': (p.expenseText, [p.background, p.card, p.expenseBg, p.primaryContainer]),
         'warningText': (p.warningText, [p.background, p.card, p.warningBg]),
         'transferText': (p.transferText, [p.background, p.card, p.transferBg]),
         'onPrimary': (p.onPrimary, [p.primary]),

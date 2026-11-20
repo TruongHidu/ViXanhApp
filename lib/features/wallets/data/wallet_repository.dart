@@ -50,6 +50,32 @@ final class WalletRepository {
   /// Số dư hiện tại của mọi ví chưa xóa, tính lại từ giao dịch.
   Stream<Map<WalletId, int>> watchBalances() => _db.walletsDao.watchBalances();
 
+  /// Tổng số dư của các ví đang dùng (bỏ ví lưu trữ / đã xóa), tính bằng SQL từ giao dịch.
+  /// Thẻ tín dụng đang nợ làm giảm tổng.
+  Stream<int> watchTotalBalance() => _db
+      .customSelect(
+        '''
+        SELECT COALESCE(SUM(
+          w.initial_balance
+          + COALESCE((
+              SELECT SUM(CASE t.type WHEN 'income' THEN t.amount ELSE -t.amount END)
+              FROM transactions t
+              WHERE t.wallet_id = w.id AND t.deleted_at IS NULL
+            ), 0)
+          + COALESCE((
+              SELECT SUM(t.amount)
+              FROM transactions t
+              WHERE t.to_wallet_id = w.id AND t.type = 'transfer' AND t.deleted_at IS NULL
+            ), 0)
+        ), 0) AS total
+        FROM wallets w
+        WHERE w.deleted_at IS NULL AND w.archived = 0
+        ''',
+        readsFrom: {_db.wallets, _db.transactions},
+      )
+      .watch()
+      .map((rows) => rows.single.read<int>('total'));
+
   /// Đã có ít nhất một ví đang dùng chưa.
   Future<Result<bool>> hasActiveWallet() => guardAsync(
     () async => (await _db.walletsDao.watchActive().first).isNotEmpty,
@@ -74,4 +100,9 @@ final activeWalletsProvider = StreamProvider.autoDispose<List<WalletRow>>(
 /// Số dư hiện tại theo ví, tự cập nhật khi có giao dịch mới.
 final walletBalancesProvider = StreamProvider.autoDispose<Map<WalletId, int>>(
   (ref) => ref.watch(walletRepositoryProvider).watchBalances(),
+);
+
+/// Tổng số dư các ví đang dùng.
+final totalBalanceProvider = StreamProvider.autoDispose<int>(
+  (ref) => ref.watch(walletRepositoryProvider).watchTotalBalance(),
 );

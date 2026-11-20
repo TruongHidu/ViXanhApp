@@ -27,12 +27,15 @@ class AppShell extends StatelessWidget {
       },
       child: Scaffold(
         body: navigationShell,
+        floatingActionButton: AppAddButton(
+          label: l10n.addTransaction,
+          onPressed: () => context.push(Routes.addTransaction),
+        ),
+        floatingActionButtonLocation: AppAddButton.location,
         bottomNavigationBar: AppBottomBar(
           currentIndex: index,
           // Bấm lại tab đang mở → về màn gốc của tab đó.
           onSelect: (i) => navigationShell.goBranch(i, initialLocation: i == index),
-          onAdd: () => context.push(Routes.addTransaction),
-          addLabel: l10n.addTransaction,
           items: [
             AppBottomBarItem(
               label: l10n.tabOverview,
@@ -41,13 +44,13 @@ class AppShell extends StatelessWidget {
             ),
             AppBottomBarItem(
               label: l10n.tabTransactions,
-              icon: Icons.receipt_long_outlined,
-              selectedIcon: Icons.receipt_long_rounded,
+              icon: Icons.format_list_bulleted_rounded,
+              selectedIcon: Icons.view_list_rounded,
             ),
             AppBottomBarItem(
               label: l10n.tabReports,
-              icon: Icons.pie_chart_outline_rounded,
-              selectedIcon: Icons.pie_chart_rounded,
+              icon: Icons.bar_chart_rounded,
+              selectedIcon: Icons.insert_chart_rounded,
             ),
             AppBottomBarItem(
               label: l10n.tabAccount,

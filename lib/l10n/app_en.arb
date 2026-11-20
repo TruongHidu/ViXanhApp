@@ -133,5 +133,21 @@
   "txnSourceWebhook": "Sent by bank",
   "txnSourceRecurring": "Recurring transaction",
   "txnSourceImport": "Imported from file",
-  "txnLoadingLabel": "Loading transactions"
+  "txnLoadingLabel": "Loading transactions",
+  "greetingMorning": "Good morning",
+  "greetingAfternoon": "Good afternoon",
+  "greetingEvening": "Good evening",
+  "greetingWithName": "{greeting}, {name}",
+  "homeTotalBalance": "Total balance",
+  "homeIncomeMonth": "Income this month",
+  "homeExpenseMonth": "Spent this month",
+  "hideBalance": "Hide balances",
+  "showBalance": "Show balances",
+  "homeWallets": "My wallets",
+  "seeAll": "See all",
+  "homeSpending7Days": "Spending, last 7 days",
+  "homeSpendingCaption": "Total {total} · average {average}/day",
+  "homeChartDay": "{day}: spent {amount}",
+  "homeRecent": "Recent transactions",
+  "weekdayShort": "{weekday, select, 1{Mon} 2{Tue} 3{Wed} 4{Thu} 5{Fri} 6{Sat} 7{Sun} other{}}"
 }

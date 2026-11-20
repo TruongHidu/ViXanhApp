@@ -608,5 +608,98 @@
   "txnLoadingLabel": "Đang tải giao dịch",
   "@txnLoadingLabel": {
     "description": "Nhãn trợ năng khi danh sách đang tải"
+  },
+  "greetingMorning": "Chào buổi sáng",
+  "@greetingMorning": {
+    "description": "Lời chào trước 11 giờ"
+  },
+  "greetingAfternoon": "Chào buổi chiều",
+  "@greetingAfternoon": {
+    "description": "Lời chào từ 11 đến 18 giờ"
+  },
+  "greetingEvening": "Chào buổi tối",
+  "@greetingEvening": {
+    "description": "Lời chào từ 18 giờ"
+  },
+  "greetingWithName": "{greeting}, {name}",
+  "@greetingWithName": {
+    "description": "Lời chào kèm tên người dùng",
+    "placeholders": {
+      "greeting": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTotalBalance": "Tổng số dư",
+  "@homeTotalBalance": {
+    "description": "Nhãn thẻ tổng số dư"
+  },
+  "homeIncomeMonth": "Thu tháng này",
+  "@homeIncomeMonth": {
+    "description": "Tổng thu của tháng tài chính hiện tại"
+  },
+  "homeExpenseMonth": "Chi tháng này",
+  "@homeExpenseMonth": {
+    "description": "Tổng chi của tháng tài chính hiện tại"
+  },
+  "hideBalance": "Ẩn số dư",
+  "@hideBalance": {
+    "description": "Nút ẩn mọi số tiền trên màn hình"
+  },
+  "showBalance": "Hiện số dư",
+  "@showBalance": {
+    "description": "Nút hiện lại số tiền"
+  },
+  "homeWallets": "Ví của tôi",
+  "@homeWallets": {
+    "description": "Tiêu đề mục ví ở Tổng quan"
+  },
+  "seeAll": "Xem tất cả",
+  "@seeAll": {
+    "description": "Liên kết xem toàn bộ danh sách"
+  },
+  "homeSpending7Days": "Chi tiêu 7 ngày qua",
+  "@homeSpending7Days": {
+    "description": "Tiêu đề biểu đồ chi 7 ngày"
+  },
+  "homeSpendingCaption": "Tổng {total} · trung bình {average}/ngày",
+  "@homeSpendingCaption": {
+    "description": "Tổng và trung bình chi của 7 ngày",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "average": {
+        "type": "String"
+      }
+    }
+  },
+  "homeChartDay": "{day}: chi {amount}",
+  "@homeChartDay": {
+    "description": "Nhãn trợ năng cho một cột biểu đồ",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "homeRecent": "Giao dịch gần đây",
+  "@homeRecent": {
+    "description": "Tiêu đề mục giao dịch gần đây"
+  },
+  "weekdayShort": "{weekday, select, 1{T2} 2{T3} 3{T4} 4{T5} 5{T6} 6{T7} 7{CN} other{}}",
+  "@weekdayShort": {
+    "description": "Tên thứ viết tắt dưới cột biểu đồ (1 = thứ Hai … 7 = Chủ nhật)",
+    "placeholders": {
+      "weekday": {
+        "type": "String"
+      }
+    }
   }
 }

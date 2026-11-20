@@ -431,4 +431,70 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get txnLoadingLabel => 'Đang tải giao dịch';
+
+  @override
+  String get greetingMorning => 'Chào buổi sáng';
+
+  @override
+  String get greetingAfternoon => 'Chào buổi chiều';
+
+  @override
+  String get greetingEvening => 'Chào buổi tối';
+
+  @override
+  String greetingWithName(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get homeTotalBalance => 'Tổng số dư';
+
+  @override
+  String get homeIncomeMonth => 'Thu tháng này';
+
+  @override
+  String get homeExpenseMonth => 'Chi tháng này';
+
+  @override
+  String get hideBalance => 'Ẩn số dư';
+
+  @override
+  String get showBalance => 'Hiện số dư';
+
+  @override
+  String get homeWallets => 'Ví của tôi';
+
+  @override
+  String get seeAll => 'Xem tất cả';
+
+  @override
+  String get homeSpending7Days => 'Chi tiêu 7 ngày qua';
+
+  @override
+  String homeSpendingCaption(String total, String average) {
+    return 'Tổng $total · trung bình $average/ngày';
+  }
+
+  @override
+  String homeChartDay(String day, String amount) {
+    return '$day: chi $amount';
+  }
+
+  @override
+  String get homeRecent => 'Giao dịch gần đây';
+
+  @override
+  String weekdayShort(String weekday) {
+    String _temp0 = intl.Intl.selectLogic(weekday, {
+      '1': 'T2',
+      '2': 'T3',
+      '3': 'T4',
+      '4': 'T5',
+      '5': 'T6',
+      '6': 'T7',
+      '7': 'CN',
+      'other': '',
+    });
+    return '$_temp0';
+  }
 }

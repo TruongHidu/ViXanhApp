@@ -87,7 +87,7 @@ final class AppPalette {
     divider: Color(0xFFE6E4DE),
     income: Color(0xFF2E8B6A),
     incomeBg: Color(0xFFE3F4EC),
-    incomeText: Color(0xFF2A7A5E),
+    incomeText: Color(0xFF287559),
     expense: Color(0xFFD0685A),
     expenseBg: Color(0xFFFBE9E6),
     expenseText: Color(0xFFA9493A),

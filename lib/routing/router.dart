@@ -57,6 +57,9 @@ final routerProvider = Provider<GoRouter>((ref) {
                 routes: [
                   GoRoute(
                     path: Routes.transactionDetailSegment,
+                    // Che cả thanh điều hướng (thiết kế màn chi tiết không có tab, và nút "+" nổi
+                    // không được đè lên hai nút Xóa / Chỉnh sửa).
+                    parentNavigatorKey: rootKey,
                     builder: (context, state) => TransactionDetailScreen(
                       id: TransactionId(state.pathParameters[Routes.idParam]!),
                     ),

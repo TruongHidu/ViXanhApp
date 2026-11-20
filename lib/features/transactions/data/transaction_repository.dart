@@ -149,6 +149,53 @@ final class TransactionRepository {
         .map((rows) => rows.map(_toListItem).toList());
   }
 
+  /// [limit] giao dịch mới nhất (mọi kỳ), cho mục "Giao dịch gần đây".
+  Stream<List<TransactionListItem>> watchRecent({int limit = 5}) => _db
+      .customSelect(
+        'SELECT $_listColumns $_listJoins WHERE t.deleted_at IS NULL '
+        'ORDER BY t.occurred_at DESC, t.created_at DESC LIMIT ?',
+        variables: [Variable.withInt(limit)],
+        readsFrom: {_db.transactions, _db.wallets, _db.categories},
+      )
+      .watch()
+      .map((rows) => rows.map(_toListItem).toList());
+
+  /// Tổng chi theo từng ngày (giờ địa phương) trong [range]; ngày không chi thì không có khóa.
+  /// Khóa là `DateTime(năm, tháng, ngày)` địa phương.
+  ///
+  /// Ngày địa phương tính bằng độ lệch múi giờ của Dart (không dùng `localtime` của SQLite —
+  /// có bản build không đọc được múi giờ). Việt Nam không đổi giờ mùa hè nên một độ lệch là đủ.
+  Stream<Map<DateTime, int>> watchDailyExpense(DateRange range) {
+    const dayMs = Duration.millisecondsPerDay;
+    final offsetMs = range.start.timeZoneOffset.inMilliseconds;
+    return _db
+        .customSelect(
+          '''
+          SELECT (occurred_at + ?) / $dayMs AS day, SUM(amount) AS total
+          FROM transactions
+          WHERE deleted_at IS NULL AND type = 'expense' AND occurred_at >= ? AND occurred_at < ?
+          GROUP BY day
+          ''',
+          variables: [
+            Variable.withInt(offsetMs),
+            Variable.withInt(range.start.toUtc().millisecondsSinceEpoch),
+            Variable.withInt(range.end.toUtc().millisecondsSinceEpoch),
+          ],
+          readsFrom: {_db.transactions},
+        )
+        .watch()
+        .map((rows) => {for (final r in rows) _localDay(r.read<int>('day')): r.read<int>('total')});
+  }
+
+  /// Số thứ tự ngày (tính từ 1970-01-01 theo giờ địa phương) → `DateTime` địa phương 0h.
+  static DateTime _localDay(int dayIndex) {
+    final utc = DateTime.fromMillisecondsSinceEpoch(
+      dayIndex * Duration.millisecondsPerDay,
+      isUtc: true,
+    );
+    return DateTime(utc.year, utc.month, utc.day);
+  }
+
   /// Một giao dịch (chưa xóa) cho màn chi tiết; `null` khi không còn.
   Stream<TransactionListItem?> watchItem(TransactionId id) => _db
       .customSelect(

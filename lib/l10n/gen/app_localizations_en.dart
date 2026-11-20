@@ -433,4 +433,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get txnLoadingLabel => 'Loading transactions';
+
+  @override
+  String get greetingMorning => 'Good morning';
+
+  @override
+  String get greetingAfternoon => 'Good afternoon';
+
+  @override
+  String get greetingEvening => 'Good evening';
+
+  @override
+  String greetingWithName(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get homeTotalBalance => 'Total balance';
+
+  @override
+  String get homeIncomeMonth => 'Income this month';
+
+  @override
+  String get homeExpenseMonth => 'Spent this month';
+
+  @override
+  String get hideBalance => 'Hide balances';
+
+  @override
+  String get showBalance => 'Show balances';
+
+  @override
+  String get homeWallets => 'My wallets';
+
+  @override
+  String get seeAll => 'See all';
+
+  @override
+  String get homeSpending7Days => 'Spending, last 7 days';
+
+  @override
+  String homeSpendingCaption(String total, String average) {
+    return 'Total $total · average $average/day';
+  }
+
+  @override
+  String homeChartDay(String day, String amount) {
+    return '$day: spent $amount';
+  }
+
+  @override
+  String get homeRecent => 'Recent transactions';
+
+  @override
+  String weekdayShort(String weekday) {
+    String _temp0 = intl.Intl.selectLogic(weekday, {
+      '1': 'Mon',
+      '2': 'Tue',
+      '3': 'Wed',
+      '4': 'Thu',
+      '5': 'Fri',
+      '6': 'Sat',
+      '7': 'Sun',
+      'other': '',
+    });
+    return '$_temp0';
+  }
 }
