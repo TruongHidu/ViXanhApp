@@ -1,0 +1,111 @@
+{
+  "@@locale": "vi",
+  "appTitle": "Ví Xanh",
+  "@appTitle": {
+    "description": "Tên app hiển thị trong trình chuyển ứng dụng"
+  },
+  "homeTitle": "Tổng quan",
+  "@homeTitle": {
+    "description": "Tiêu đề màn Tổng quan"
+  },
+  "settingsTitle": "Cài đặt",
+  "@settingsTitle": {
+    "description": "Tiêu đề màn Cài đặt"
+  },
+  "themeMode": "Giao diện",
+  "@themeMode": {
+    "description": "Tiêu đề nhóm chọn chế độ sáng/tối trong Cài đặt"
+  },
+  "themeSystem": "Theo hệ thống",
+  "@themeSystem": {
+    "description": "Chế độ giao diện theo hệ điều hành"
+  },
+  "themeLight": "Sáng",
+  "@themeLight": {
+    "description": "Chế độ giao diện sáng"
+  },
+  "themeDark": "Tối",
+  "@themeDark": {
+    "description": "Chế độ giao diện tối"
+  },
+  "language": "Ngôn ngữ",
+  "@language": {
+    "description": "Tiêu đề nhóm chọn ngôn ngữ trong Cài đặt"
+  },
+  "languageSystem": "Theo hệ thống",
+  "@languageSystem": {
+    "description": "Lựa chọn ngôn ngữ: dùng ngôn ngữ của hệ điều hành"
+  },
+  "languageVi": "Tiếng Việt",
+  "@languageVi": {
+    "description": "Tên tiếng Việt, luôn viết bằng tiếng Việt ở mọi ngôn ngữ"
+  },
+  "languageEn": "English",
+  "@languageEn": {
+    "description": "Tên tiếng Anh, luôn viết bằng tiếng Anh ở mọi ngôn ngữ"
+  },
+  "settingsSaveFailed": "Không lưu được cài đặt. Vui lòng thử lại.",
+  "@settingsSaveFailed": {
+    "description": "Snackbar khi ghi cài đặt thất bại"
+  },
+  "tabOverview": "Tổng quan",
+  "@tabOverview": {
+    "description": "Nhãn tab Tổng quan trên thanh điều hướng dưới"
+  },
+  "tabTransactions": "Giao dịch",
+  "@tabTransactions": {
+    "description": "Nhãn tab Giao dịch trên thanh điều hướng dưới"
+  },
+  "tabReports": "Báo cáo",
+  "@tabReports": {
+    "description": "Nhãn tab Báo cáo trên thanh điều hướng dưới"
+  },
+  "tabAccount": "Tài khoản",
+  "@tabAccount": {
+    "description": "Nhãn tab Tài khoản trên thanh điều hướng dưới"
+  },
+  "addTransaction": "Thêm giao dịch",
+  "@addTransaction": {
+    "description": "Nhãn trợ năng của nút + và tiêu đề màn thêm giao dịch"
+  },
+  "today": "Hôm nay",
+  "@today": {
+    "description": "Nhãn ngày cho hôm nay trong danh sách giao dịch"
+  },
+  "yesterday": "Hôm qua",
+  "@yesterday": {
+    "description": "Nhãn ngày cho hôm qua trong danh sách giao dịch"
+  },
+  "undo": "Hoàn tác",
+  "@undo": {
+    "description": "Nút trên snackbar để hoàn tác thao tác vừa làm (ví dụ xóa)"
+  },
+  "emptyOverview": "Chào bạn! Ghi khoản chi đầu tiên để xem tiền của mình đi đâu nhé.",
+  "@emptyOverview": {
+    "description": "Trạng thái trống của màn Tổng quan"
+  },
+  "emptyTransactions": "Chưa có giao dịch nào. Bấm nút + để ghi khoản đầu tiên.",
+  "@emptyTransactions": {
+    "description": "Trạng thái trống của danh sách giao dịch"
+  },
+  "emptyReports": "Báo cáo sẽ hiện ở đây khi bạn có vài giao dịch.",
+  "@emptyReports": {
+    "description": "Trạng thái trống của màn Báo cáo"
+  },
+  "emptyAccount": "Quản lý ví, danh mục và cài đặt của bạn tại đây.",
+  "@emptyAccount": {
+    "description": "Dòng giới thiệu ở màn Tài khoản khi chưa có ví"
+  },
+  "onboardingTitle": "Chào mừng đến với Ví Xanh",
+  "@onboardingTitle": {
+    "description": "Tiêu đề màn chào mừng lần đầu mở app"
+  },
+  "onboardingBody": "Ghi chi tiêu chỉ trong vài giây. Dữ liệu nằm trên máy của bạn, dùng được cả khi mất mạng.",
+  "@onboardingBody": {
+    "description": "Mô tả ngắn dưới tiêu đề màn chào mừng"
+  },
+  "onboardingStart": "Bắt đầu",
+  "@onboardingStart": {
+    "description": "Nút hoàn tất màn chào mừng"
+  }
+}

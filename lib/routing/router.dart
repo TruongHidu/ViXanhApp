@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../features/home/presentation/home_screen.dart';
+import '../features/onboarding/presentation/onboarding_screen.dart';
+import '../features/reports/presentation/reports_screen.dart';
+import '../features/settings/presentation/account_screen.dart';
+import '../features/settings/presentation/settings_notifier.dart';
+import '../features/settings/presentation/settings_screen.dart';
+import '../features/transactions/presentation/add_transaction_screen.dart';
+import '../features/transactions/presentation/transactions_screen.dart';
+import 'app_shell.dart';
+import 'routes.dart';
+
+/// Router sống suốt vòng đời app: đổi cài đặt KHÔNG tạo lại GoRouter (mất stack điều hướng),
+/// mà chỉ báo `refreshListenable` để chạy lại `redirect`.
+final routerProvider = Provider<GoRouter>((ref) {
+  // Key tạo trong provider (không để global) để mỗi router — kể cả trong test — có key riêng.
+  final rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+  GlobalKey<NavigatorState> branchKey(String label) => GlobalKey<NavigatorState>(debugLabel: label);
+
+  final onboardingDone = ValueNotifier<bool>(ref.read(appPreferencesProvider).onboardingCompleted);
+  ref.listen(
+    appPreferencesProvider.select((p) => p.onboardingCompleted),
+    (_, done) => onboardingDone.value = done,
+  );
+
+  final router = GoRouter(
+    navigatorKey: rootKey,
+    initialLocation: Routes.overview,
+    refreshListenable: onboardingDone,
+    redirect: (context, state) {
+      final atOnboarding = state.matchedLocation == Routes.onboarding;
+      if (!onboardingDone.value) return atOnboarding ? null : Routes.onboarding;
+      return atOnboarding ? Routes.overview : null;
+    },
+    routes: [
+      GoRoute(path: Routes.onboarding, builder: (context, state) => const OnboardingScreen()),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, shell) => AppShell(navigationShell: shell),
+        branches: [
+          StatefulShellBranch(
+            navigatorKey: branchKey('overview'),
+            routes: [
+              GoRoute(path: Routes.overview, builder: (context, state) => const HomeScreen()),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: branchKey('transactions'),
+            routes: [
+              GoRoute(
+                path: Routes.transactions,
+                builder: (context, state) => const TransactionsScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: branchKey('reports'),
+            routes: [
+              GoRoute(path: Routes.reports, builder: (context, state) => const ReportsScreen()),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: branchKey('account'),
+            routes: [
+              GoRoute(
+                path: Routes.account,
+                builder: (context, state) => const AccountScreen(),
+                routes: [
+                  GoRoute(
+                    path: Routes.settingsSegment,
+                    builder: (context, state) => const SettingsScreen(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: Routes.addTransaction,
+        parentNavigatorKey: rootKey,
+        pageBuilder: (context, state) =>
+            const MaterialPage(fullscreenDialog: true, child: AddTransactionScreen()),
+      ),
+    ],
+  );
+
+  ref.onDispose(() {
+    router.dispose();
+    onboardingDone.dispose();
+  });
+  return router;
+});

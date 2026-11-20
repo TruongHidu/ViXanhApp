@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      drift_dev:
+        # Chỉ quét thư mục data — sửa file ngoài lib/data không kích hoạt lại drift.
+        generate_for:
+          - lib/data/**
+        options:
+          sql:
+            dialect: sqlite
+            options:
+              # Bảng STRICT cần SQLite >= 3.37; sqlite3_flutter_libs đóng gói bản mới hơn.
+              version: "3.38"
+          store_date_time_values_as_text: false
+          databases:
+            default: lib/data/database.dart
+          schema_dir: drift_schemas/
+          test_dir: test/drift/
