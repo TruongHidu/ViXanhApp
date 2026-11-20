@@ -54,11 +54,17 @@ void main() {
   );
 
   group('seed danh mục mặc định', () {
-    test('đúng 12 danh mục gốc và 5 danh mục con', () async {
+    test('đúng 14 danh mục gốc và 5 danh mục con', () async {
       final expense = await db.categoriesDao.watchByType(CategoryType.expense).first;
       final income = await db.categoriesDao.watchByType(CategoryType.income).first;
-      expect(expense.length + income.length, 12);
-      expect(income.map((n) => n.category.systemKey), ['luong', 'thuong', 'khac_thu']);
+      expect(expense.length + income.length, 14);
+      expect(income.map((n) => n.category.systemKey), [
+        'luong',
+        'thuong',
+        'ban_hang',
+        'lai_tiet_kiem',
+        'khac_thu',
+      ]);
 
       final anUong = expense.firstWhere((n) => n.category.systemKey == 'an_uong');
       expect(anUong.children.map((c) => c.systemKey), ['ca_phe', 'di_cho']);

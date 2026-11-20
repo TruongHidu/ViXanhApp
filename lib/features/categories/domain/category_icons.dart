@@ -19,6 +19,8 @@ const categoryIcons = <String, IconData>{
   'bolt': Icons.bolt_rounded,
   'water_drop': Icons.water_drop_rounded,
   'wifi': Icons.wifi_rounded,
+  'storefront': Icons.storefront_rounded,
+  'trending_up': Icons.trending_up_rounded,
 };
 
 /// Icon dự phòng cho khóa lạ (ví dụ dữ liệu từ bản app mới hơn).

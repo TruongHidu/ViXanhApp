@@ -42,6 +42,31 @@ final class AppPreferencesNotifier extends Notifier<AppPreferences> {
 
   Future<Result<void>> setHideBalance(bool hide) => _update(state.copyWith(hideBalance: hide));
 
+  /// Rỗng / chỉ khoảng trắng → xóa tên (chào chung).
+  Future<Result<void>> setUserName(String? name) async {
+    if (!AppPreferences.isValidUserName(name)) return Err(_userNameTooLong());
+    return _update(state.copyWith(userName: AppPreferences.normalizeUserName(name)));
+  }
+
+  /// Lưu kết quả Thiết lập ban đầu trong MỘT lần ghi: tên, ngày bắt đầu tháng và cờ
+  /// onboarding — để không bao giờ có trạng thái "đã xong onboarding nhưng thiếu cài đặt".
+  Future<Result<void>> completeSetup({String? userName, required int monthStartDay}) async {
+    if (!AppPreferences.isValidUserName(userName)) return Err(_userNameTooLong());
+    if (!AppPreferences.isValidMonthStartDay(monthStartDay)) {
+      return Err(ValidationFailure('Ngày bắt đầu tháng không hợp lệ: $monthStartDay'));
+    }
+    return _update(
+      state.copyWith(
+        userName: AppPreferences.normalizeUserName(userName),
+        monthStartDay: monthStartDay,
+        onboardingCompleted: true,
+      ),
+    );
+  }
+
+  static ValidationFailure _userNameTooLong() =>
+      const ValidationFailure('Tên tối đa ${AppPreferences.maxUserNameLength} ký tự');
+
   Future<Result<void>> _update(AppPreferences next) async {
     final previous = state;
     if (next == previous) return const Ok(null);

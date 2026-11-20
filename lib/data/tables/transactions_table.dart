@@ -28,6 +28,9 @@ class Transactions extends Table with Timestamps {
   /// Đơn vị nhỏ nhất (đồng), luôn > 0.
   IntColumn get amount => integer()();
   IntColumn get occurredAt => integer().map(const EpochMsConverter())();
+
+  /// Tên người nhận / nơi chi ("Highlands Coffee"); hiển thị thay tên danh mục khi có.
+  TextColumn get payee => text().nullable()();
   TextColumn get note => text().nullable()();
   TextColumn get source =>
       textEnum<TransactionSource>().withDefault(Constant(TransactionSource.manual.name))();
@@ -45,6 +48,7 @@ class Transactions extends Table with Timestamps {
   @override
   List<String> get customConstraints => [
     'CHECK (amount > 0)',
+    'CHECK (payee IS NULL OR length(payee) BETWEEN 1 AND 120)',
     "CHECK (type IN ('income', 'expense', 'transfer'))",
     "CHECK (source IN ('manual', 'notification', 'webhook', 'recurring', 'import'))",
     "CHECK ((type = 'transfer') = (to_wallet_id IS NOT NULL))",

@@ -1426,6 +1426,15 @@ class $TransactionsTable extends Transactions with TableInfo<$TransactionsTable,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   ).withConverter<DateTime>($TransactionsTable.$converteroccurredAt);
+  static const VerificationMeta _payeeMeta = const VerificationMeta('payee');
+  @override
+  late final GeneratedColumn<String> payee = GeneratedColumn<String>(
+    'payee',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _noteMeta = const VerificationMeta('note');
   @override
   late final GeneratedColumn<String> note = GeneratedColumn<String>(
@@ -1475,6 +1484,7 @@ class $TransactionsTable extends Transactions with TableInfo<$TransactionsTable,
     type,
     amount,
     occurredAt,
+    payee,
     note,
     source,
     bankEventId,
@@ -1496,6 +1506,9 @@ class $TransactionsTable extends Transactions with TableInfo<$TransactionsTable,
       context.handle(_amountMeta, amount.isAcceptableOrUnknown(data['amount']!, _amountMeta));
     } else if (isInserting) {
       context.missing(_amountMeta);
+    }
+    if (data.containsKey('payee')) {
+      context.handle(_payeeMeta, payee.isAcceptableOrUnknown(data['payee']!, _payeeMeta));
     }
     if (data.containsKey('note')) {
       context.handle(_noteMeta, note.isAcceptableOrUnknown(data['note']!, _noteMeta));
@@ -1561,6 +1574,10 @@ class $TransactionsTable extends Transactions with TableInfo<$TransactionsTable,
       occurredAt: $TransactionsTable.$converteroccurredAt.fromSql(
         attachedDatabase.typeMapping.read(DriftSqlType.int, data['${effectivePrefix}occurred_at'])!,
       ),
+      payee: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payee'],
+      ),
       note: attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}note']),
       source: $TransactionsTable.$convertersource.fromSql(
         attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}source'])!,
@@ -1619,6 +1636,9 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
   /// Đơn vị nhỏ nhất (đồng), luôn > 0.
   final int amount;
   final DateTime occurredAt;
+
+  /// Tên người nhận / nơi chi ("Highlands Coffee"); hiển thị thay tên danh mục khi có.
+  final String? payee;
   final String? note;
   final TransactionSource source;
 
@@ -1636,6 +1656,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
     required this.type,
     required this.amount,
     required this.occurredAt,
+    this.payee,
     this.note,
     required this.source,
     this.bankEventId,
@@ -1676,6 +1697,9 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
     {
       map['occurred_at'] = Variable<int>($TransactionsTable.$converteroccurredAt.toSql(occurredAt));
     }
+    if (!nullToAbsent || payee != null) {
+      map['payee'] = Variable<String>(payee);
+    }
     if (!nullToAbsent || note != null) {
       map['note'] = Variable<String>(note);
     }
@@ -1703,6 +1727,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
       type: Value(type),
       amount: Value(amount),
       occurredAt: Value(occurredAt),
+      payee: payee == null && nullToAbsent ? const Value.absent() : Value(payee),
       note: note == null && nullToAbsent ? const Value.absent() : Value(note),
       source: Value(source),
       bankEventId: bankEventId == null && nullToAbsent ? const Value.absent() : Value(bankEventId),
@@ -1723,6 +1748,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
       type: $TransactionsTable.$convertertype.fromJson(serializer.fromJson<String>(json['type'])),
       amount: serializer.fromJson<int>(json['amount']),
       occurredAt: serializer.fromJson<DateTime>(json['occurredAt']),
+      payee: serializer.fromJson<String?>(json['payee']),
       note: serializer.fromJson<String?>(json['note']),
       source: $TransactionsTable.$convertersource.fromJson(
         serializer.fromJson<String>(json['source']),
@@ -1745,6 +1771,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
       'type': serializer.toJson<String>($TransactionsTable.$convertertype.toJson(type)),
       'amount': serializer.toJson<int>(amount),
       'occurredAt': serializer.toJson<DateTime>(occurredAt),
+      'payee': serializer.toJson<String?>(payee),
       'note': serializer.toJson<String?>(note),
       'source': serializer.toJson<String>($TransactionsTable.$convertersource.toJson(source)),
       'bankEventId': serializer.toJson<String?>(bankEventId),
@@ -1763,6 +1790,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
     TransactionType? type,
     int? amount,
     DateTime? occurredAt,
+    Value<String?> payee = const Value.absent(),
     Value<String?> note = const Value.absent(),
     TransactionSource? source,
     Value<String?> bankEventId = const Value.absent(),
@@ -1778,6 +1806,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
     type: type ?? this.type,
     amount: amount ?? this.amount,
     occurredAt: occurredAt ?? this.occurredAt,
+    payee: payee.present ? payee.value : this.payee,
     note: note.present ? note.value : this.note,
     source: source ?? this.source,
     bankEventId: bankEventId.present ? bankEventId.value : this.bankEventId,
@@ -1795,6 +1824,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
       type: data.type.present ? data.type.value : this.type,
       amount: data.amount.present ? data.amount.value : this.amount,
       occurredAt: data.occurredAt.present ? data.occurredAt.value : this.occurredAt,
+      payee: data.payee.present ? data.payee.value : this.payee,
       note: data.note.present ? data.note.value : this.note,
       source: data.source.present ? data.source.value : this.source,
       bankEventId: data.bankEventId.present ? data.bankEventId.value : this.bankEventId,
@@ -1815,6 +1845,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
           ..write('type: $type, ')
           ..write('amount: $amount, ')
           ..write('occurredAt: $occurredAt, ')
+          ..write('payee: $payee, ')
           ..write('note: $note, ')
           ..write('source: $source, ')
           ..write('bankEventId: $bankEventId, ')
@@ -1835,6 +1866,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
     type,
     amount,
     occurredAt,
+    payee,
     note,
     source,
     bankEventId,
@@ -1854,6 +1886,7 @@ class TransactionRow extends DataClass implements Insertable<TransactionRow> {
           other.type == this.type &&
           other.amount == this.amount &&
           other.occurredAt == this.occurredAt &&
+          other.payee == this.payee &&
           other.note == this.note &&
           other.source == this.source &&
           other.bankEventId == this.bankEventId &&
@@ -1871,6 +1904,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
   final Value<TransactionType> type;
   final Value<int> amount;
   final Value<DateTime> occurredAt;
+  final Value<String?> payee;
   final Value<String?> note;
   final Value<TransactionSource> source;
   final Value<String?> bankEventId;
@@ -1887,6 +1921,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
     this.type = const Value.absent(),
     this.amount = const Value.absent(),
     this.occurredAt = const Value.absent(),
+    this.payee = const Value.absent(),
     this.note = const Value.absent(),
     this.source = const Value.absent(),
     this.bankEventId = const Value.absent(),
@@ -1904,6 +1939,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
     required TransactionType type,
     required int amount,
     required DateTime occurredAt,
+    this.payee = const Value.absent(),
     this.note = const Value.absent(),
     this.source = const Value.absent(),
     this.bankEventId = const Value.absent(),
@@ -1927,6 +1963,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
     Expression<String>? type,
     Expression<int>? amount,
     Expression<int>? occurredAt,
+    Expression<String>? payee,
     Expression<String>? note,
     Expression<String>? source,
     Expression<String>? bankEventId,
@@ -1944,6 +1981,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
       if (type != null) 'type': type,
       if (amount != null) 'amount': amount,
       if (occurredAt != null) 'occurred_at': occurredAt,
+      if (payee != null) 'payee': payee,
       if (note != null) 'note': note,
       if (source != null) 'source': source,
       if (bankEventId != null) 'bank_event_id': bankEventId,
@@ -1963,6 +2001,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
     Value<TransactionType>? type,
     Value<int>? amount,
     Value<DateTime>? occurredAt,
+    Value<String?>? payee,
     Value<String?>? note,
     Value<TransactionSource>? source,
     Value<String?>? bankEventId,
@@ -1980,6 +2019,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
       type: type ?? this.type,
       amount: amount ?? this.amount,
       occurredAt: occurredAt ?? this.occurredAt,
+      payee: payee ?? this.payee,
       note: note ?? this.note,
       source: source ?? this.source,
       bankEventId: bankEventId ?? this.bankEventId,
@@ -2035,6 +2075,9 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
         $TransactionsTable.$converteroccurredAt.toSql(occurredAt.value),
       );
     }
+    if (payee.present) {
+      map['payee'] = Variable<String>(payee.value);
+    }
     if (note.present) {
       map['note'] = Variable<String>(note.value);
     }
@@ -2066,6 +2109,7 @@ class TransactionsCompanion extends UpdateCompanion<TransactionRow> {
           ..write('type: $type, ')
           ..write('amount: $amount, ')
           ..write('occurredAt: $occurredAt, ')
+          ..write('payee: $payee, ')
           ..write('note: $note, ')
           ..write('source: $source, ')
           ..write('bankEventId: $bankEventId, ')
@@ -3031,6 +3075,7 @@ typedef $$TransactionsTableCreateCompanionBuilder =
       required TransactionType type,
       required int amount,
       required DateTime occurredAt,
+      Value<String?> payee,
       Value<String?> note,
       Value<TransactionSource> source,
       Value<String?> bankEventId,
@@ -3049,6 +3094,7 @@ typedef $$TransactionsTableUpdateCompanionBuilder =
       Value<TransactionType> type,
       Value<int> amount,
       Value<DateTime> occurredAt,
+      Value<String?> payee,
       Value<String?> note,
       Value<TransactionSource> source,
       Value<String?> bankEventId,
@@ -3147,6 +3193,9 @@ class $$TransactionsTableFilterComposer extends Composer<_$AppDatabase, $Transac
     column: $table.occurredAt,
     builder: (column) => ColumnWithTypeConverterFilters(column),
   );
+
+  ColumnFilters<String> get payee =>
+      $composableBuilder(column: $table.payee, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<String> get note =>
       $composableBuilder(column: $table.note, builder: (column) => ColumnFilters(column));
@@ -3247,6 +3296,9 @@ class $$TransactionsTableOrderingComposer extends Composer<_$AppDatabase, $Trans
   ColumnOrderings<int> get occurredAt =>
       $composableBuilder(column: $table.occurredAt, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get payee =>
+      $composableBuilder(column: $table.payee, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<String> get note =>
       $composableBuilder(column: $table.note, builder: (column) => ColumnOrderings(column));
 
@@ -3342,6 +3394,9 @@ class $$TransactionsTableAnnotationComposer extends Composer<_$AppDatabase, $Tra
 
   GeneratedColumnWithTypeConverter<DateTime, int> get occurredAt =>
       $composableBuilder(column: $table.occurredAt, builder: (column) => column);
+
+  GeneratedColumn<String> get payee =>
+      $composableBuilder(column: $table.payee, builder: (column) => column);
 
   GeneratedColumn<String> get note =>
       $composableBuilder(column: $table.note, builder: (column) => column);
@@ -3446,6 +3501,7 @@ class $$TransactionsTableTableManager
                 Value<TransactionType> type = const Value.absent(),
                 Value<int> amount = const Value.absent(),
                 Value<DateTime> occurredAt = const Value.absent(),
+                Value<String?> payee = const Value.absent(),
                 Value<String?> note = const Value.absent(),
                 Value<TransactionSource> source = const Value.absent(),
                 Value<String?> bankEventId = const Value.absent(),
@@ -3462,6 +3518,7 @@ class $$TransactionsTableTableManager
                 type: type,
                 amount: amount,
                 occurredAt: occurredAt,
+                payee: payee,
                 note: note,
                 source: source,
                 bankEventId: bankEventId,
@@ -3480,6 +3537,7 @@ class $$TransactionsTableTableManager
                 required TransactionType type,
                 required int amount,
                 required DateTime occurredAt,
+                Value<String?> payee = const Value.absent(),
                 Value<String?> note = const Value.absent(),
                 Value<TransactionSource> source = const Value.absent(),
                 Value<String?> bankEventId = const Value.absent(),
@@ -3496,6 +3554,7 @@ class $$TransactionsTableTableManager
                 type: type,
                 amount: amount,
                 occurredAt: occurredAt,
+                payee: payee,
                 note: note,
                 source: source,
                 bankEventId: bankEventId,

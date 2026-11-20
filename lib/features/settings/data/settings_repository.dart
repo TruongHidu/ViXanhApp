@@ -15,9 +15,17 @@ final class SettingsRepository {
   static const kOnboardingCompleted = 'onboarding_completed';
   static const kMonthStartDay = 'month_start_day';
   static const kHideBalance = 'hide_balance';
+  static const kUserName = 'user_name';
 
   /// Toàn bộ key được lưu — dùng làm allowList của shared_preferences.
-  static const keys = {kThemeMode, kLocale, kOnboardingCompleted, kMonthStartDay, kHideBalance};
+  static const keys = {
+    kThemeMode,
+    kLocale,
+    kOnboardingCompleted,
+    kMonthStartDay,
+    kHideBalance,
+    kUserName,
+  };
 
   final KeyValueStore _store;
   AppPreferences _cached = const AppPreferences();
@@ -37,6 +45,7 @@ final class SettingsRepository {
           ? day
           : defaults.monthStartDay,
       hideBalance: _store.getBool(kHideBalance) ?? defaults.hideBalance,
+      userName: AppPreferences.normalizeUserName(_store.getString(kUserName)),
     );
     return _cached;
   }
@@ -53,6 +62,11 @@ final class SettingsRepository {
       await _store.setBool(kOnboardingCompleted, prefs.onboardingCompleted);
       await _store.setInt(kMonthStartDay, prefs.monthStartDay);
       await _store.setBool(kHideBalance, prefs.hideBalance);
+      if (prefs.userName case final name?) {
+        await _store.setString(kUserName, name);
+      } else {
+        await _store.remove(kUserName);
+      }
     }, onError: (e) => UnexpectedFailure('Không lưu được cài đặt', cause: e));
     if (result.isOk) _cached = prefs;
     return result;

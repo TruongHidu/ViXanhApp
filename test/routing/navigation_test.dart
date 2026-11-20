@@ -35,15 +35,11 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('chưa onboarding → màn chào; bấm Bắt đầu → Tổng quan và cờ được lưu', (tester) async {
-    final store = await pumpApp(tester, onboarded: false);
+  testWidgets('chưa onboarding → màn chào, không có thanh điều hướng', (tester) async {
+    await pumpApp(tester, onboarded: false);
     expect(find.byType(OnboardingScreen), findsOneWidget);
     expect(find.byType(AppBottomBar), findsNothing);
-
-    await tester.tap(find.text('Bắt đầu'));
-    await tester.pumpAndSettle();
-    expect(find.byType(HomeScreen), findsOneWidget);
-    expect(store.values['onboarding_completed'], isTrue);
+    // Luồng onboarding đầy đủ: test/features/onboarding/onboarding_flow_test.dart.
   });
 
   testWidgets('bấm từng tab → đúng màn, tab cũ vẫn giữ trạng thái (IndexedStack)', (tester) async {

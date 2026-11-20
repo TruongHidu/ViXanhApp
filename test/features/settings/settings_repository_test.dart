@@ -14,6 +14,7 @@ void main() {
     onboardingCompleted: true,
     monthStartDay: 25,
     hideBalance: true,
+    userName: 'Minh',
   );
 
   test('kho rỗng → mặc định', () {
@@ -35,6 +36,7 @@ void main() {
       'onboarding_completed': true,
       'month_start_day': 25,
       'hide_balance': true,
+      'user_name': 'Minh',
     });
   });
 
@@ -80,5 +82,21 @@ void main() {
     final store = FakeKeyValueStore();
     await SettingsRepository(store).save(custom);
     expect(SettingsRepository.keys, containsAll(store.values.keys));
+  });
+
+  test('user_name: khoảng trắng hai đầu bị bỏ; rỗng hoặc quá dài → không có tên', () {
+    String? load(String raw) =>
+        SettingsRepository(FakeKeyValueStore({'user_name': raw})).load().userName;
+    expect(load('  Minh  '), 'Minh');
+    expect(load('   '), isNull);
+    expect(load('a' * 41), isNull);
+  });
+
+  test('userName null xóa key', () async {
+    final store = FakeKeyValueStore();
+    final repo = SettingsRepository(store);
+    await repo.save(custom);
+    await repo.save(custom.copyWith(userName: null));
+    expect(store.values.containsKey('user_name'), isFalse);
   });
 }

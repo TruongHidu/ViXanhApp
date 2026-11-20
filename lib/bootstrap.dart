@@ -9,6 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'app.dart';
 import 'data/database.dart';
 import 'features/settings/data/settings_repository.dart';
+import 'features/transactions/data/last_wallet_store.dart';
 import 'native/bank_notification_channel.dart';
 import 'services/auth_service.dart';
 import 'services/backup_service.dart';
@@ -76,7 +77,9 @@ Future<void> bootstrap() async {
 /// (cài đặt mặc định, không lưu được) thay vì treo app.
 Future<KeyValueStore> _openKeyValueStore(CrashLog log) async {
   try {
-    return await SharedPrefsKeyValueStore.create(allowList: SettingsRepository.keys);
+    return await SharedPrefsKeyValueStore.create(
+      allowList: {...SettingsRepository.keys, ...LastWalletStore.keys},
+    );
   } catch (e, s) {
     log.record('Không mở được shared_preferences: $e', s);
     return InMemoryKeyValueStore();

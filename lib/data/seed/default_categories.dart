@@ -43,6 +43,8 @@ const defaultCategories = <DefaultCategory>[
   DefaultCategory('khac_chi', 'Khác', _e, 'more_horiz', 0xFFB5B5B5),
   DefaultCategory('luong', 'Lương', _i, 'payments', 0xFF5FAE8C),
   DefaultCategory('thuong', 'Thưởng', _i, 'redeem', 0xFFC9B26B),
+  DefaultCategory('ban_hang', 'Bán hàng', _i, 'storefront', 0xFFE8A87C),
+  DefaultCategory('lai_tiet_kiem', 'Lãi tiết kiệm', _i, 'trending_up', 0xFF9BB0E0),
   DefaultCategory('khac_thu', 'Khác', _i, 'more_horiz', 0xFFB5B5B5),
   // Danh mục con.
   DefaultCategory('ca_phe', 'Cà phê', _e, 'local_cafe', 0xFFE8A87C, parentKey: 'an_uong'),

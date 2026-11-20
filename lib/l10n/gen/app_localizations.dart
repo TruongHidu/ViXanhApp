@@ -237,23 +237,467 @@ abstract class AppLocalizations {
   /// **'Quản lý ví, danh mục và cài đặt của bạn tại đây.'**
   String get emptyAccount;
 
-  /// Tiêu đề màn chào mừng lần đầu mở app
-  ///
-  /// In vi, this message translates to:
-  /// **'Chào mừng đến với Ví Xanh'**
-  String get onboardingTitle;
-
-  /// Mô tả ngắn dưới tiêu đề màn chào mừng
-  ///
-  /// In vi, this message translates to:
-  /// **'Ghi chi tiêu chỉ trong vài giây. Dữ liệu nằm trên máy của bạn, dùng được cả khi mất mạng.'**
-  String get onboardingBody;
-
-  /// Nút hoàn tất màn chào mừng
+  /// Nút ở trang giới thiệu cuối, chuyển sang Thiết lập
   ///
   /// In vi, this message translates to:
   /// **'Bắt đầu'**
   String get onboardingStart;
+
+  /// Tiêu đề trang giới thiệu 1
+  ///
+  /// In vi, this message translates to:
+  /// **'Biết tiền mình đi đâu'**
+  String get onboarding1Title;
+
+  /// Mô tả trang giới thiệu 1
+  ///
+  /// In vi, this message translates to:
+  /// **'Ghi chép thu chi chỉ trong vài giây.'**
+  String get onboarding1Body;
+
+  /// Tiêu đề trang giới thiệu 2
+  ///
+  /// In vi, this message translates to:
+  /// **'Tự động ghi nhận chuyển khoản'**
+  String get onboarding2Title;
+
+  /// Mô tả trang giới thiệu 2
+  ///
+  /// In vi, this message translates to:
+  /// **'Kết nối thông báo ngân hàng, app tự gợi ý giao dịch cho bạn.'**
+  String get onboarding2Body;
+
+  /// Tiêu đề trang giới thiệu 3
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi tiêu có kế hoạch'**
+  String get onboarding3Title;
+
+  /// Mô tả trang giới thiệu 3
+  ///
+  /// In vi, this message translates to:
+  /// **'Đặt ngân sách, nhận nhắc nhở nhẹ nhàng trước khi tiêu quá tay.'**
+  String get onboarding3Body;
+
+  /// Nút bỏ qua phần giới thiệu
+  ///
+  /// In vi, this message translates to:
+  /// **'Bỏ qua'**
+  String get onboardingSkip;
+
+  /// Nút sang trang/bước tiếp theo
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiếp tục'**
+  String get onboardingNext;
+
+  /// Nhãn trợ năng cho chấm chỉ trang giới thiệu
+  ///
+  /// In vi, this message translates to:
+  /// **'Trang {current} trên {total}'**
+  String onboardingPageLabel(int current, int total);
+
+  /// Nhãn trợ năng của nút quay lại
+  ///
+  /// In vi, this message translates to:
+  /// **'Quay lại'**
+  String get back;
+
+  /// Chỉ bước hiện tại của Thiết lập ban đầu
+  ///
+  /// In vi, this message translates to:
+  /// **'Bước {step}/{total}'**
+  String setupStep(int step, int total);
+
+  /// Nhãn trợ năng của thanh tiến độ Thiết lập
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiến độ thiết lập'**
+  String get setupProgressLabel;
+
+  /// Tiêu đề Thiết lập bước 1
+  ///
+  /// In vi, this message translates to:
+  /// **'Bạn muốn gọi là gì?'**
+  String get setupProfileTitle;
+
+  /// Mô tả Thiết lập bước 1
+  ///
+  /// In vi, this message translates to:
+  /// **'Vài thông tin nhỏ để Ví Xanh hợp với bạn hơn.'**
+  String get setupProfileSubtitle;
+
+  /// Nhãn ô nhập tên người dùng
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên của bạn'**
+  String get setupNameLabel;
+
+  /// Gợi ý trong ô nhập tên
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví dụ: Minh'**
+  String get setupNameHint;
+
+  /// Nhãn chọn đơn vị tiền
+  ///
+  /// In vi, this message translates to:
+  /// **'Đơn vị tiền'**
+  String get setupCurrencyLabel;
+
+  /// Lựa chọn đơn vị tiền Việt Nam đồng
+  ///
+  /// In vi, this message translates to:
+  /// **'₫ VND'**
+  String get currencyVnd;
+
+  /// Nhãn chọn ngày bắt đầu tháng
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngày bắt đầu tháng tài chính'**
+  String get setupMonthStartLabel;
+
+  /// Giá trị ngày bắt đầu tháng đang chọn
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngày {day} hằng tháng'**
+  String setupMonthStartValue(int day);
+
+  /// Gợi ý dưới ô chọn ngày bắt đầu tháng
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví dụ: chọn ngày nhận lương'**
+  String get setupMonthStartHint;
+
+  /// Nhãn trợ năng nút giảm ngày
+  ///
+  /// In vi, this message translates to:
+  /// **'Lùi một ngày'**
+  String get dayDecrease;
+
+  /// Nhãn trợ năng nút tăng ngày
+  ///
+  /// In vi, this message translates to:
+  /// **'Tăng một ngày'**
+  String get dayIncrease;
+
+  /// Tiêu đề Thiết lập bước 2
+  ///
+  /// In vi, this message translates to:
+  /// **'Tạo ví đầu tiên'**
+  String get setupWalletTitle;
+
+  /// Mô tả Thiết lập bước 2
+  ///
+  /// In vi, this message translates to:
+  /// **'Chọn nơi bạn hay giữ tiền nhất. Thêm ví khác sau cũng được.'**
+  String get setupWalletSubtitle;
+
+  /// Snackbar khi hoàn tất Thiết lập thất bại
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa tạo được ví. Vui lòng thử lại.'**
+  String get setupFailed;
+
+  /// Loại ví tiền mặt
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiền mặt'**
+  String get walletTypeCash;
+
+  /// Gợi ý dưới loại ví tiền mặt
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiền trong ví, túi'**
+  String get walletTypeCashHint;
+
+  /// Loại ví tài khoản ngân hàng
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngân hàng'**
+  String get walletTypeBank;
+
+  /// Gợi ý dưới loại ví ngân hàng
+  ///
+  /// In vi, this message translates to:
+  /// **'Vietcombank, MB…'**
+  String get walletTypeBankHint;
+
+  /// Loại ví điện tử
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví điện tử'**
+  String get walletTypeEwallet;
+
+  /// Gợi ý dưới loại ví điện tử
+  ///
+  /// In vi, this message translates to:
+  /// **'MoMo, ZaloPay…'**
+  String get walletTypeEwalletHint;
+
+  /// Loại ví thẻ tín dụng
+  ///
+  /// In vi, this message translates to:
+  /// **'Thẻ tín dụng'**
+  String get walletTypeCredit;
+
+  /// Gợi ý dưới loại ví thẻ tín dụng
+  ///
+  /// In vi, this message translates to:
+  /// **'Visa, Mastercard'**
+  String get walletTypeCreditHint;
+
+  /// Tên ví điền sẵn khi chọn tiền mặt
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiền mặt'**
+  String get walletDefaultNameCash;
+
+  /// Tên ví điền sẵn khi chọn ngân hàng
+  ///
+  /// In vi, this message translates to:
+  /// **'Tài khoản ngân hàng'**
+  String get walletDefaultNameBank;
+
+  /// Tên ví điền sẵn khi chọn ví điện tử
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví MoMo'**
+  String get walletDefaultNameEwallet;
+
+  /// Tên ví điền sẵn khi chọn thẻ tín dụng
+  ///
+  /// In vi, this message translates to:
+  /// **'Thẻ tín dụng'**
+  String get walletDefaultNameCredit;
+
+  /// Nhãn ô nhập số dư ban đầu của ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Số dư hiện tại'**
+  String get walletBalanceLabel;
+
+  /// Nhãn ô nhập dư nợ ban đầu của thẻ tín dụng
+  ///
+  /// In vi, this message translates to:
+  /// **'Dư nợ hiện tại'**
+  String get walletDebtLabel;
+
+  /// Nhãn ô nhập tên ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên ví'**
+  String get walletNameLabel;
+
+  /// Lỗi khi tên ví rỗng hoặc quá dài
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên ví cần từ 1 đến 64 ký tự.'**
+  String get walletNameInvalid;
+
+  /// Loại giao dịch chi
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi tiêu'**
+  String get txnTypeExpense;
+
+  /// Loại giao dịch thu
+  ///
+  /// In vi, this message translates to:
+  /// **'Thu nhập'**
+  String get txnTypeIncome;
+
+  /// Loại giao dịch chuyển giữa các ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chuyển khoản'**
+  String get txnTypeTransfer;
+
+  /// Nhãn trợ năng của nhóm tab loại giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Loại giao dịch'**
+  String get txnTypeTabsLabel;
+
+  /// Nút lưu giao dịch trên bàn phím số
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu'**
+  String get txnSave;
+
+  /// Lưu rồi giữ màn hình để nhập khoản tiếp theo
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu & thêm tiếp'**
+  String get txnSaveMore;
+
+  /// Nhãn trợ năng đọc số tiền đang nhập
+  ///
+  /// In vi, this message translates to:
+  /// **'Số tiền {amount}'**
+  String txnAmountLabel(String amount);
+
+  /// Nhãn trợ năng chip số tiền nhanh
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhập nhanh {amount}'**
+  String txnQuickAmount(String amount);
+
+  /// Nhãn nhóm chọn danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục'**
+  String get txnCategoriesLabel;
+
+  /// Mở danh sách mọi danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Tất cả'**
+  String get categoryAll;
+
+  /// Tiêu đề bảng chọn danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Chọn danh mục'**
+  String get chooseCategory;
+
+  /// Tiêu đề bảng chọn ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chọn ví'**
+  String get chooseWallet;
+
+  /// Nhãn dòng chọn ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví'**
+  String get txnFieldWallet;
+
+  /// Nhãn ví nguồn khi chuyển khoản
+  ///
+  /// In vi, this message translates to:
+  /// **'Từ ví'**
+  String get txnFromWallet;
+
+  /// Nhãn ví đích khi chuyển khoản
+  ///
+  /// In vi, this message translates to:
+  /// **'Đến ví'**
+  String get txnToWallet;
+
+  /// Nút đổi chỗ ví nguồn và ví đích
+  ///
+  /// In vi, this message translates to:
+  /// **'Đổi chiều chuyển'**
+  String get swapWallets;
+
+  /// Nhãn dòng chọn thời gian
+  ///
+  /// In vi, this message translates to:
+  /// **'Thời gian'**
+  String get txnFieldTime;
+
+  /// Ngày và giờ giao dịch, ví dụ 'Hôm nay, 08:15'
+  ///
+  /// In vi, this message translates to:
+  /// **'{day}, {time}'**
+  String txnDateTime(String day, String time);
+
+  /// Nhãn ô ghi chú
+  ///
+  /// In vi, this message translates to:
+  /// **'Ghi chú'**
+  String get txnNoteLabel;
+
+  /// Gợi ý trong ô ghi chú
+  ///
+  /// In vi, this message translates to:
+  /// **'Thêm ghi chú (vd: cà phê với Lan)'**
+  String get txnNoteHint;
+
+  /// Khi chưa chọn được ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa có ví'**
+  String get txnNoWallet;
+
+  /// Nhãn trợ năng phím số
+  ///
+  /// In vi, this message translates to:
+  /// **'Số {digit}'**
+  String keypadDigit(String digit);
+
+  /// Nhãn trợ năng phím 000
+  ///
+  /// In vi, this message translates to:
+  /// **'Ba số không'**
+  String get keypadThousand;
+
+  /// Nhãn trợ năng phím xóa
+  ///
+  /// In vi, this message translates to:
+  /// **'Xóa lùi'**
+  String get keypadBackspace;
+
+  /// Nhãn trợ năng phím cộng
+  ///
+  /// In vi, this message translates to:
+  /// **'Cộng thêm khoản'**
+  String get keypadPlus;
+
+  /// Nhãn trợ năng phím trừ
+  ///
+  /// In vi, this message translates to:
+  /// **'Trừ bớt'**
+  String get keypadMinus;
+
+  /// Thông báo sau khi lưu và thêm tiếp
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã lưu {amount} · {label}'**
+  String txnSaved(String amount, String label);
+
+  /// Lỗi khi chưa nhập số tiền
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhập số tiền trước nhé'**
+  String get txnErrorAmount;
+
+  /// Lỗi khi chưa chọn danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Chọn danh mục trước nhé'**
+  String get txnErrorCategory;
+
+  /// Lỗi khi ví không hợp lệ
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví này không còn dùng được, hãy chọn ví khác'**
+  String get txnErrorWallet;
+
+  /// Lỗi chuyển khoản thiếu ví hoặc trùng ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chọn hai ví khác nhau để chuyển khoản'**
+  String get txnErrorTransfer;
+
+  /// Lỗi ghi chú vượt độ dài
+  ///
+  /// In vi, this message translates to:
+  /// **'Ghi chú quá dài'**
+  String get txnErrorTooLong;
+
+  /// Lỗi chung khi lưu giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa lưu được giao dịch. Vui lòng thử lại.'**
+  String get txnSaveFailed;
+
+  /// Lỗi khi không tải được giao dịch để sửa
+  ///
+  /// In vi, this message translates to:
+  /// **'Không mở được giao dịch.'**
+  String get txnLoadFailed;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

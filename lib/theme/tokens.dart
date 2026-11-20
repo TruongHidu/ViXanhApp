@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/enums.dart';
+
 /// Design tokens — nguồn DUY NHẤT cho màu, khoảng cách, bo góc, kích thước.
 /// Widget không viết mã màu trực tiếp; đọc qua `Theme.of(context)` / `context.appColors`.
 
@@ -182,6 +184,29 @@ abstract final class CategoryPalette {
     'khac_chi': fallback,
     'luong': Color(0xFF5FAE8C),
     'thuong': Color(0xFFC9B26B),
+    'ban_hang': Color(0xFFE8A87C),
+    'lai_tiet_kiem': Color(0xFF9BB0E0),
     'khac_thu': fallback,
   };
+}
+
+/// Màu nhận diện theo loại ví (icon và nền nhạt của icon).
+abstract final class WalletPalette {
+  static const byType = <WalletType, Color>{
+    WalletType.cash: Color(0xFF5FAE8C),
+    WalletType.bank: Color(0xFF6FB7B7),
+    WalletType.ewallet: Color(0xFFE59AB0),
+    WalletType.credit: Color(0xFF7FA7D9),
+  };
+}
+
+/// Màu pastel cho hình minh họa (onboarding, trạng thái trống). Chỉ dùng cho đồ họa trang trí.
+abstract final class IllustrationColors {
+  static const yellow = Color(0xFFF0C66B);
+  static const blue = Color(0xFF7FA7D9);
+  static const pink = Color(0xFFE59AB0);
+  static const green = Color(0xFF8CC79A);
+  static const orange = Color(0xFFE8A87C);
+  static const teal = Color(0xFF6FB7B7);
+  static const coral = Color(0xFFE8A2A0);
 }

@@ -96,16 +96,364 @@
   "@emptyAccount": {
     "description": "Dòng giới thiệu ở màn Tài khoản khi chưa có ví"
   },
-  "onboardingTitle": "Chào mừng đến với Ví Xanh",
-  "@onboardingTitle": {
-    "description": "Tiêu đề màn chào mừng lần đầu mở app"
-  },
-  "onboardingBody": "Ghi chi tiêu chỉ trong vài giây. Dữ liệu nằm trên máy của bạn, dùng được cả khi mất mạng.",
-  "@onboardingBody": {
-    "description": "Mô tả ngắn dưới tiêu đề màn chào mừng"
-  },
   "onboardingStart": "Bắt đầu",
   "@onboardingStart": {
-    "description": "Nút hoàn tất màn chào mừng"
+    "description": "Nút ở trang giới thiệu cuối, chuyển sang Thiết lập"
+  },
+  "onboarding1Title": "Biết tiền mình đi đâu",
+  "@onboarding1Title": {
+    "description": "Tiêu đề trang giới thiệu 1"
+  },
+  "onboarding1Body": "Ghi chép thu chi chỉ trong vài giây.",
+  "@onboarding1Body": {
+    "description": "Mô tả trang giới thiệu 1"
+  },
+  "onboarding2Title": "Tự động ghi nhận chuyển khoản",
+  "@onboarding2Title": {
+    "description": "Tiêu đề trang giới thiệu 2"
+  },
+  "onboarding2Body": "Kết nối thông báo ngân hàng, app tự gợi ý giao dịch cho bạn.",
+  "@onboarding2Body": {
+    "description": "Mô tả trang giới thiệu 2"
+  },
+  "onboarding3Title": "Chi tiêu có kế hoạch",
+  "@onboarding3Title": {
+    "description": "Tiêu đề trang giới thiệu 3"
+  },
+  "onboarding3Body": "Đặt ngân sách, nhận nhắc nhở nhẹ nhàng trước khi tiêu quá tay.",
+  "@onboarding3Body": {
+    "description": "Mô tả trang giới thiệu 3"
+  },
+  "onboardingSkip": "Bỏ qua",
+  "@onboardingSkip": {
+    "description": "Nút bỏ qua phần giới thiệu"
+  },
+  "onboardingNext": "Tiếp tục",
+  "@onboardingNext": {
+    "description": "Nút sang trang/bước tiếp theo"
+  },
+  "onboardingPageLabel": "Trang {current} trên {total}",
+  "@onboardingPageLabel": {
+    "description": "Nhãn trợ năng cho chấm chỉ trang giới thiệu",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "back": "Quay lại",
+  "@back": {
+    "description": "Nhãn trợ năng của nút quay lại"
+  },
+  "setupStep": "Bước {step}/{total}",
+  "@setupStep": {
+    "description": "Chỉ bước hiện tại của Thiết lập ban đầu",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "setupProgressLabel": "Tiến độ thiết lập",
+  "@setupProgressLabel": {
+    "description": "Nhãn trợ năng của thanh tiến độ Thiết lập"
+  },
+  "setupProfileTitle": "Bạn muốn gọi là gì?",
+  "@setupProfileTitle": {
+    "description": "Tiêu đề Thiết lập bước 1"
+  },
+  "setupProfileSubtitle": "Vài thông tin nhỏ để Ví Xanh hợp với bạn hơn.",
+  "@setupProfileSubtitle": {
+    "description": "Mô tả Thiết lập bước 1"
+  },
+  "setupNameLabel": "Tên của bạn",
+  "@setupNameLabel": {
+    "description": "Nhãn ô nhập tên người dùng"
+  },
+  "setupNameHint": "Ví dụ: Minh",
+  "@setupNameHint": {
+    "description": "Gợi ý trong ô nhập tên"
+  },
+  "setupCurrencyLabel": "Đơn vị tiền",
+  "@setupCurrencyLabel": {
+    "description": "Nhãn chọn đơn vị tiền"
+  },
+  "currencyVnd": "₫ VND",
+  "@currencyVnd": {
+    "description": "Lựa chọn đơn vị tiền Việt Nam đồng"
+  },
+  "setupMonthStartLabel": "Ngày bắt đầu tháng tài chính",
+  "@setupMonthStartLabel": {
+    "description": "Nhãn chọn ngày bắt đầu tháng"
+  },
+  "setupMonthStartValue": "Ngày {day} hằng tháng",
+  "@setupMonthStartValue": {
+    "description": "Giá trị ngày bắt đầu tháng đang chọn",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "setupMonthStartHint": "Ví dụ: chọn ngày nhận lương",
+  "@setupMonthStartHint": {
+    "description": "Gợi ý dưới ô chọn ngày bắt đầu tháng"
+  },
+  "dayDecrease": "Lùi một ngày",
+  "@dayDecrease": {
+    "description": "Nhãn trợ năng nút giảm ngày"
+  },
+  "dayIncrease": "Tăng một ngày",
+  "@dayIncrease": {
+    "description": "Nhãn trợ năng nút tăng ngày"
+  },
+  "setupWalletTitle": "Tạo ví đầu tiên",
+  "@setupWalletTitle": {
+    "description": "Tiêu đề Thiết lập bước 2"
+  },
+  "setupWalletSubtitle": "Chọn nơi bạn hay giữ tiền nhất. Thêm ví khác sau cũng được.",
+  "@setupWalletSubtitle": {
+    "description": "Mô tả Thiết lập bước 2"
+  },
+  "setupFailed": "Chưa tạo được ví. Vui lòng thử lại.",
+  "@setupFailed": {
+    "description": "Snackbar khi hoàn tất Thiết lập thất bại"
+  },
+  "walletTypeCash": "Tiền mặt",
+  "@walletTypeCash": {
+    "description": "Loại ví tiền mặt"
+  },
+  "walletTypeCashHint": "Tiền trong ví, túi",
+  "@walletTypeCashHint": {
+    "description": "Gợi ý dưới loại ví tiền mặt"
+  },
+  "walletTypeBank": "Ngân hàng",
+  "@walletTypeBank": {
+    "description": "Loại ví tài khoản ngân hàng"
+  },
+  "walletTypeBankHint": "Vietcombank, MB…",
+  "@walletTypeBankHint": {
+    "description": "Gợi ý dưới loại ví ngân hàng"
+  },
+  "walletTypeEwallet": "Ví điện tử",
+  "@walletTypeEwallet": {
+    "description": "Loại ví điện tử"
+  },
+  "walletTypeEwalletHint": "MoMo, ZaloPay…",
+  "@walletTypeEwalletHint": {
+    "description": "Gợi ý dưới loại ví điện tử"
+  },
+  "walletTypeCredit": "Thẻ tín dụng",
+  "@walletTypeCredit": {
+    "description": "Loại ví thẻ tín dụng"
+  },
+  "walletTypeCreditHint": "Visa, Mastercard",
+  "@walletTypeCreditHint": {
+    "description": "Gợi ý dưới loại ví thẻ tín dụng"
+  },
+  "walletDefaultNameCash": "Tiền mặt",
+  "@walletDefaultNameCash": {
+    "description": "Tên ví điền sẵn khi chọn tiền mặt"
+  },
+  "walletDefaultNameBank": "Tài khoản ngân hàng",
+  "@walletDefaultNameBank": {
+    "description": "Tên ví điền sẵn khi chọn ngân hàng"
+  },
+  "walletDefaultNameEwallet": "Ví MoMo",
+  "@walletDefaultNameEwallet": {
+    "description": "Tên ví điền sẵn khi chọn ví điện tử"
+  },
+  "walletDefaultNameCredit": "Thẻ tín dụng",
+  "@walletDefaultNameCredit": {
+    "description": "Tên ví điền sẵn khi chọn thẻ tín dụng"
+  },
+  "walletBalanceLabel": "Số dư hiện tại",
+  "@walletBalanceLabel": {
+    "description": "Nhãn ô nhập số dư ban đầu của ví"
+  },
+  "walletDebtLabel": "Dư nợ hiện tại",
+  "@walletDebtLabel": {
+    "description": "Nhãn ô nhập dư nợ ban đầu của thẻ tín dụng"
+  },
+  "walletNameLabel": "Tên ví",
+  "@walletNameLabel": {
+    "description": "Nhãn ô nhập tên ví"
+  },
+  "walletNameInvalid": "Tên ví cần từ 1 đến 64 ký tự.",
+  "@walletNameInvalid": {
+    "description": "Lỗi khi tên ví rỗng hoặc quá dài"
+  },
+  "txnTypeExpense": "Chi tiêu",
+  "@txnTypeExpense": {
+    "description": "Loại giao dịch chi"
+  },
+  "txnTypeIncome": "Thu nhập",
+  "@txnTypeIncome": {
+    "description": "Loại giao dịch thu"
+  },
+  "txnTypeTransfer": "Chuyển khoản",
+  "@txnTypeTransfer": {
+    "description": "Loại giao dịch chuyển giữa các ví"
+  },
+  "txnTypeTabsLabel": "Loại giao dịch",
+  "@txnTypeTabsLabel": {
+    "description": "Nhãn trợ năng của nhóm tab loại giao dịch"
+  },
+  "txnSave": "Lưu",
+  "@txnSave": {
+    "description": "Nút lưu giao dịch trên bàn phím số"
+  },
+  "txnSaveMore": "Lưu & thêm tiếp",
+  "@txnSaveMore": {
+    "description": "Lưu rồi giữ màn hình để nhập khoản tiếp theo"
+  },
+  "txnAmountLabel": "Số tiền {amount}",
+  "@txnAmountLabel": {
+    "description": "Nhãn trợ năng đọc số tiền đang nhập",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "txnQuickAmount": "Nhập nhanh {amount}",
+  "@txnQuickAmount": {
+    "description": "Nhãn trợ năng chip số tiền nhanh",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "txnCategoriesLabel": "Danh mục",
+  "@txnCategoriesLabel": {
+    "description": "Nhãn nhóm chọn danh mục"
+  },
+  "categoryAll": "Tất cả",
+  "@categoryAll": {
+    "description": "Mở danh sách mọi danh mục"
+  },
+  "chooseCategory": "Chọn danh mục",
+  "@chooseCategory": {
+    "description": "Tiêu đề bảng chọn danh mục"
+  },
+  "chooseWallet": "Chọn ví",
+  "@chooseWallet": {
+    "description": "Tiêu đề bảng chọn ví"
+  },
+  "txnFieldWallet": "Ví",
+  "@txnFieldWallet": {
+    "description": "Nhãn dòng chọn ví"
+  },
+  "txnFromWallet": "Từ ví",
+  "@txnFromWallet": {
+    "description": "Nhãn ví nguồn khi chuyển khoản"
+  },
+  "txnToWallet": "Đến ví",
+  "@txnToWallet": {
+    "description": "Nhãn ví đích khi chuyển khoản"
+  },
+  "swapWallets": "Đổi chiều chuyển",
+  "@swapWallets": {
+    "description": "Nút đổi chỗ ví nguồn và ví đích"
+  },
+  "txnFieldTime": "Thời gian",
+  "@txnFieldTime": {
+    "description": "Nhãn dòng chọn thời gian"
+  },
+  "txnDateTime": "{day}, {time}",
+  "@txnDateTime": {
+    "description": "Ngày và giờ giao dịch, ví dụ 'Hôm nay, 08:15'",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "txnNoteLabel": "Ghi chú",
+  "@txnNoteLabel": {
+    "description": "Nhãn ô ghi chú"
+  },
+  "txnNoteHint": "Thêm ghi chú (vd: cà phê với Lan)",
+  "@txnNoteHint": {
+    "description": "Gợi ý trong ô ghi chú"
+  },
+  "txnNoWallet": "Chưa có ví",
+  "@txnNoWallet": {
+    "description": "Khi chưa chọn được ví"
+  },
+  "keypadDigit": "Số {digit}",
+  "@keypadDigit": {
+    "description": "Nhãn trợ năng phím số",
+    "placeholders": {
+      "digit": {
+        "type": "String"
+      }
+    }
+  },
+  "keypadThousand": "Ba số không",
+  "@keypadThousand": {
+    "description": "Nhãn trợ năng phím 000"
+  },
+  "keypadBackspace": "Xóa lùi",
+  "@keypadBackspace": {
+    "description": "Nhãn trợ năng phím xóa"
+  },
+  "keypadPlus": "Cộng thêm khoản",
+  "@keypadPlus": {
+    "description": "Nhãn trợ năng phím cộng"
+  },
+  "keypadMinus": "Trừ bớt",
+  "@keypadMinus": {
+    "description": "Nhãn trợ năng phím trừ"
+  },
+  "txnSaved": "Đã lưu {amount} · {label}",
+  "@txnSaved": {
+    "description": "Thông báo sau khi lưu và thêm tiếp",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "txnErrorAmount": "Nhập số tiền trước nhé",
+  "@txnErrorAmount": {
+    "description": "Lỗi khi chưa nhập số tiền"
+  },
+  "txnErrorCategory": "Chọn danh mục trước nhé",
+  "@txnErrorCategory": {
+    "description": "Lỗi khi chưa chọn danh mục"
+  },
+  "txnErrorWallet": "Ví này không còn dùng được, hãy chọn ví khác",
+  "@txnErrorWallet": {
+    "description": "Lỗi khi ví không hợp lệ"
+  },
+  "txnErrorTransfer": "Chọn hai ví khác nhau để chuyển khoản",
+  "@txnErrorTransfer": {
+    "description": "Lỗi chuyển khoản thiếu ví hoặc trùng ví"
+  },
+  "txnErrorTooLong": "Ghi chú quá dài",
+  "@txnErrorTooLong": {
+    "description": "Lỗi ghi chú vượt độ dài"
+  },
+  "txnSaveFailed": "Chưa lưu được giao dịch. Vui lòng thử lại.",
+  "@txnSaveFailed": {
+    "description": "Lỗi chung khi lưu giao dịch"
+  },
+  "txnLoadFailed": "Không mở được giao dịch.",
+  "@txnLoadFailed": {
+    "description": "Lỗi khi không tải được giao dịch để sửa"
   }
 }

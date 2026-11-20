@@ -1,5 +1,7 @@
+import 'package:drift/drift.dart' show DatabaseConnection;
 import 'package:drift/native.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart';
 import 'package:vi_xanh_app/app.dart';
@@ -17,7 +19,7 @@ import 'package:vi_xanh_app/services/sync_service.dart';
 import 'fakes/fakes.dart';
 
 AppDatabase inMemoryDatabase({Clock? clock, IdGenerator? ids}) => AppDatabase(
-  NativeDatabase.memory(),
+  DatabaseConnection(NativeDatabase.memory(), closeStreamsSynchronously: true),
   clock: clock ?? const SystemClock(),
   ids: ids ?? const UuidIdGenerator(),
 );
@@ -43,3 +45,21 @@ Widget buildTestApp(AppDatabase db, {KeyValueStore? store}) => ProviderScope(
   overrides: testOverrides(db: db, store: store),
   child: const App(),
 );
+
+/// Giả lập DB hỏng: xóa bảng giao dịch và ví (tắt khóa ngoại để xóa được), mọi lệnh ghi ví
+/// sau đó ném SqliteException. Không dùng `db.close()`: drift tự mở lại DB in-memory mới.
+Future<void> breakWalletTables(AppDatabase db) async {
+  await db.customStatement('PRAGMA foreign_keys = OFF');
+  await db.customStatement('DROP TABLE transactions');
+  await db.customStatement('DROP TABLE wallets');
+}
+
+/// Cho các truy vấn DB thật (drift) chạy xong rồi dựng lại khung hình.
+/// testWidgets chạy trong thời gian giả nên I/O của DB cần `runAsync` mới hoàn tất.
+Future<void> settleDb(WidgetTester tester) async {
+  for (var i = 0; i < 5; i++) {
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 10)));
+    await tester.pump();
+  }
+  await tester.pumpAndSettle();
+}
