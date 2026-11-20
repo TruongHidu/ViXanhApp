@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/enums.dart';
 import '../core/ids.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
@@ -12,6 +13,9 @@ import '../features/settings/presentation/settings_screen.dart';
 import '../features/transactions/presentation/add_transaction_screen.dart';
 import '../features/transactions/presentation/transaction_detail_screen.dart';
 import '../features/transactions/presentation/transactions_screen.dart';
+import '../features/wallets/presentation/wallet_detail_screen.dart';
+import '../features/wallets/presentation/wallet_form_screen.dart';
+import '../features/wallets/presentation/wallets_screen.dart';
 import 'app_shell.dart';
 import 'routes.dart';
 
@@ -85,6 +89,20 @@ final routerProvider = Provider<GoRouter>((ref) {
                     path: Routes.settingsSegment,
                     builder: (context, state) => const SettingsScreen(),
                   ),
+                  // Ví phủ lên khung tab: thiết kế không có thanh điều hướng ở các màn này.
+                  GoRoute(
+                    path: Routes.walletsSegment,
+                    parentNavigatorKey: rootKey,
+                    builder: (context, state) => const WalletsScreen(),
+                    routes: [
+                      GoRoute(
+                        path: Routes.walletDetailSegment,
+                        parentNavigatorKey: rootKey,
+                        builder: (context, state) =>
+                            WalletDetailScreen(id: WalletId(state.pathParameters[Routes.idParam]!)),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],
@@ -94,8 +112,29 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: Routes.addTransaction,
         parentNavigatorKey: rootKey,
+        pageBuilder: (context, state) => MaterialPage(
+          fullscreenDialog: true,
+          child: AddTransactionScreen(
+            initialType: switch (state.uri.queryParameters[Routes.typeParam]) {
+              final type? => TransactionType.values.asNameMap()[type] ?? TransactionType.expense,
+              null => TransactionType.expense,
+            },
+          ),
+        ),
+      ),
+      GoRoute(
+        path: Routes.newWallet,
+        parentNavigatorKey: rootKey,
         pageBuilder: (context, state) =>
-            const MaterialPage(fullscreenDialog: true, child: AddTransactionScreen()),
+            const MaterialPage(fullscreenDialog: true, child: WalletFormScreen()),
+      ),
+      GoRoute(
+        path: Routes.editWalletPattern,
+        parentNavigatorKey: rootKey,
+        pageBuilder: (context, state) => MaterialPage(
+          fullscreenDialog: true,
+          child: WalletFormScreen(walletId: WalletId(state.pathParameters[Routes.idParam]!)),
+        ),
       ),
       GoRoute(
         path: Routes.editTransactionPattern,

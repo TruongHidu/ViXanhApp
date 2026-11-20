@@ -497,4 +497,118 @@ class AppLocalizationsVi extends AppLocalizations {
     });
     return '$_temp0';
   }
+
+  @override
+  String get walletAccountLabel => '4 số cuối tài khoản / thẻ (không bắt buộc)';
+
+  @override
+  String get walletAccountHint => '1234';
+
+  @override
+  String get walletAccountInvalid => 'Nhập đúng 4 chữ số cuối.';
+
+  @override
+  String get walletsTitle => 'Ví của tôi';
+
+  @override
+  String get walletsTotalAssets => 'Tổng tài sản';
+
+  @override
+  String get walletsDebt => 'Nợ thẻ tín dụng';
+
+  @override
+  String get walletsNetWorth => 'Tài sản ròng';
+
+  @override
+  String get walletAdd => 'Thêm ví';
+
+  @override
+  String get walletTransferBetween => 'Chuyển tiền giữa các ví';
+
+  @override
+  String get walletEditTitle => 'Sửa ví';
+
+  @override
+  String get walletSave => 'Lưu';
+
+  @override
+  String get walletSaveFailed => 'Chưa lưu được ví. Vui lòng thử lại.';
+
+  @override
+  String get walletOptions => 'Tùy chọn ví';
+
+  @override
+  String get walletArchive => 'Lưu trữ ví';
+
+  @override
+  String walletArchiveConfirmTitle(String name) {
+    return 'Lưu trữ ví $name?';
+  }
+
+  @override
+  String get walletArchiveConfirmBody =>
+      'Ví sẽ ẩn khỏi danh sách và không chọn được khi thêm giao dịch. Giao dịch cũ vẫn được giữ.';
+
+  @override
+  String get cancel => 'Hủy';
+
+  @override
+  String get walletArchived => 'Đã lưu trữ ví';
+
+  @override
+  String get walletArchiveLast => 'Cần giữ ít nhất một ví đang dùng.';
+
+  @override
+  String get walletBalance30Days => 'Số dư 30 ngày';
+
+  @override
+  String walletChartSummary(
+    String from,
+    String to,
+    String min,
+    String minDay,
+    String max,
+    String maxDay,
+  ) {
+    return 'Biểu đồ số dư từ $from đến $to: thấp nhất $min ngày $minDay, cao nhất $max ngày $maxDay';
+  }
+
+  @override
+  String get walletTransactions => 'Giao dịch của ví';
+
+  @override
+  String get walletNoTransactions => 'Ví này chưa có giao dịch nào.';
+
+  @override
+  String get walletNotFound => 'Ví này không còn nữa.';
+
+  @override
+  String walletTypeAndAccount(String type, String account) {
+    return '$type · $account';
+  }
+
+  @override
+  String compactThousand(String value) {
+    return '${value}k';
+  }
+
+  @override
+  String compactMillion(String value) {
+    return '$value tr';
+  }
+
+  @override
+  String compactBillion(String value) {
+    return '$value tỷ';
+  }
+
+  @override
+  String walletTransferTo(String name) {
+    return 'Chuyển sang $name';
+  }
+
+  @override
+  String walletTransferFrom(String name) {
+    return 'Nhận từ $name';
+  }
 }

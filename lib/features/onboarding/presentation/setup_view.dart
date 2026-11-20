@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/enums.dart';
 import '../../../core/failure.dart';
 import '../../../core/result.dart';
 import '../../../l10n/gen/app_localizations.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/tokens.dart';
+import '../../../theme/widgets/labeled_field.dart';
 import '../../../theme/widgets/thousands_input_formatter.dart';
 import '../../settings/domain/app_preferences.dart';
-import '../../wallets/data/wallet_repository.dart';
 import '../../wallets/presentation/wallet_type_ui.dart';
-import '../../wallets/presentation/widgets/wallet_type_picker.dart';
+import '../../wallets/presentation/widgets/wallet_form_fields.dart';
 import 'setup_notifier.dart';
 
 /// Thiết lập ban đầu: bước 1 (tên, đơn vị tiền, ngày bắt đầu tháng), bước 2 (ví đầu tiên).
@@ -209,29 +208,6 @@ class _StepHeader extends StatelessWidget {
   }
 }
 
-/// Nhãn đặt phía trên ô nhập (theo thiết kế); gộp ngữ nghĩa để trình đọc màn hình đọc kèm nhãn.
-class _LabeledField extends StatelessWidget {
-  const _LabeledField({required this.label, required this.child});
-
-  final String label;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) => MergeSemantics(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        child,
-      ],
-    ),
-  );
-}
-
 class _ProfileStep extends ConsumerWidget {
   const _ProfileStep({required this.state, required this.nameController});
 
@@ -250,7 +226,7 @@ class _ProfileStep extends ConsumerWidget {
       children: [
         _StepHeader(title: l10n.setupProfileTitle, subtitle: l10n.setupProfileSubtitle),
         const SizedBox(height: 28),
-        _LabeledField(
+        LabeledField(
           label: l10n.setupNameLabel,
           child: TextField(
             controller: nameController,
@@ -392,38 +368,17 @@ class _WalletStep extends ConsumerWidget {
       children: [
         _StepHeader(title: l10n.setupWalletTitle, subtitle: l10n.setupWalletSubtitle),
         const SizedBox(height: AppSpacing.xl),
-        WalletTypePicker(
-          selected: type,
-          onPick: (picked) => notifier.pickWalletType(picked, picked.defaultName(l10n)),
+        WalletFormFields(
+          type: type,
+          onPickType: (picked) => notifier.pickWalletType(picked, picked.defaultName(l10n)),
+          balanceController: balanceController,
+          onBalanceChanged: notifier.setBalance,
+          nameController: nameController,
+          onNameChanged: notifier.setWalletName,
+          nameError: state.walletNameEdited && !state.isWalletNameValid
+              ? l10n.walletNameInvalid
+              : null,
         ),
-        if (type != null) ...[
-          const SizedBox(height: AppSpacing.xl),
-          _LabeledField(
-            label: type == WalletType.credit ? l10n.walletDebtLabel : l10n.walletBalanceLabel,
-            child: TextField(
-              controller: balanceController,
-              keyboardType: TextInputType.number,
-              inputFormatters: const [ThousandsInputFormatter()],
-              onChanged: (text) => notifier.setBalance(ThousandsInputFormatter.parse(text)),
-              decoration: const InputDecoration(hintText: '0', suffixText: '₫'),
-            ),
-          ),
-          const SizedBox(height: 20),
-          _LabeledField(
-            label: l10n.walletNameLabel,
-            child: TextField(
-              controller: nameController,
-              onChanged: notifier.setWalletName,
-              textCapitalization: TextCapitalization.sentences,
-              inputFormatters: [LengthLimitingTextInputFormatter(WalletRepository.maxNameLength)],
-              decoration: InputDecoration(
-                errorText: state.walletNameEdited && !state.isWalletNameValid
-                    ? l10n.walletNameInvalid
-                    : null,
-              ),
-            ),
-          ),
-        ],
       ],
     );
   }

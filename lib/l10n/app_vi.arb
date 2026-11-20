@@ -701,5 +701,183 @@
         "type": "String"
       }
     }
+  },
+  "walletAccountLabel": "4 số cuối tài khoản / thẻ (không bắt buộc)",
+  "@walletAccountLabel": {
+    "description": "Nhãn ô nhập 4 số cuối tài khoản ngân hàng hoặc thẻ"
+  },
+  "walletAccountHint": "1234",
+  "@walletAccountHint": {
+    "description": "Gợi ý ô 4 số cuối"
+  },
+  "walletAccountInvalid": "Nhập đúng 4 chữ số cuối.",
+  "@walletAccountInvalid": {
+    "description": "Lỗi khi 4 số cuối không hợp lệ"
+  },
+  "walletsTitle": "Ví của tôi",
+  "@walletsTitle": {
+    "description": "Tiêu đề màn danh sách ví"
+  },
+  "walletsTotalAssets": "Tổng tài sản",
+  "@walletsTotalAssets": {
+    "description": "Tổng số dư dương của các ví"
+  },
+  "walletsDebt": "Nợ thẻ tín dụng",
+  "@walletsDebt": {
+    "description": "Tổng số dư âm (đang nợ)"
+  },
+  "walletsNetWorth": "Tài sản ròng",
+  "@walletsNetWorth": {
+    "description": "Tài sản trừ nợ"
+  },
+  "walletAdd": "Thêm ví",
+  "@walletAdd": {
+    "description": "Nút và tiêu đề màn thêm ví"
+  },
+  "walletTransferBetween": "Chuyển tiền giữa các ví",
+  "@walletTransferBetween": {
+    "description": "Nút mở màn chuyển khoản giữa các ví"
+  },
+  "walletEditTitle": "Sửa ví",
+  "@walletEditTitle": {
+    "description": "Tiêu đề màn sửa ví"
+  },
+  "walletSave": "Lưu",
+  "@walletSave": {
+    "description": "Nút lưu ví"
+  },
+  "walletSaveFailed": "Chưa lưu được ví. Vui lòng thử lại.",
+  "@walletSaveFailed": {
+    "description": "Lỗi chung khi lưu ví"
+  },
+  "walletOptions": "Tùy chọn ví",
+  "@walletOptions": {
+    "description": "Nút mở menu của ví"
+  },
+  "walletArchive": "Lưu trữ ví",
+  "@walletArchive": {
+    "description": "Lệnh lưu trữ ví"
+  },
+  "walletArchiveConfirmTitle": "Lưu trữ ví {name}?",
+  "@walletArchiveConfirmTitle": {
+    "description": "Tiêu đề hộp xác nhận lưu trữ ví",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "walletArchiveConfirmBody": "Ví sẽ ẩn khỏi danh sách và không chọn được khi thêm giao dịch. Giao dịch cũ vẫn được giữ.",
+  "@walletArchiveConfirmBody": {
+    "description": "Nội dung hộp xác nhận lưu trữ ví"
+  },
+  "cancel": "Hủy",
+  "@cancel": {
+    "description": "Nút hủy trong hộp thoại"
+  },
+  "walletArchived": "Đã lưu trữ ví",
+  "@walletArchived": {
+    "description": "Snackbar sau khi lưu trữ ví"
+  },
+  "walletArchiveLast": "Cần giữ ít nhất một ví đang dùng.",
+  "@walletArchiveLast": {
+    "description": "Lỗi khi lưu trữ ví cuối cùng"
+  },
+  "walletBalance30Days": "Số dư 30 ngày",
+  "@walletBalance30Days": {
+    "description": "Tiêu đề biểu đồ số dư của ví"
+  },
+  "walletChartSummary": "Biểu đồ số dư từ {from} đến {to}: thấp nhất {min} ngày {minDay}, cao nhất {max} ngày {maxDay}",
+  "@walletChartSummary": {
+    "description": "Mô tả trợ năng của biểu đồ số dư",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "min": {
+        "type": "String"
+      },
+      "minDay": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      },
+      "maxDay": {
+        "type": "String"
+      }
+    }
+  },
+  "walletTransactions": "Giao dịch của ví",
+  "@walletTransactions": {
+    "description": "Tiêu đề danh sách giao dịch trong chi tiết ví"
+  },
+  "walletNoTransactions": "Ví này chưa có giao dịch nào.",
+  "@walletNoTransactions": {
+    "description": "Khi ví chưa có giao dịch"
+  },
+  "walletNotFound": "Ví này không còn nữa.",
+  "@walletNotFound": {
+    "description": "Khi ví đã bị xóa"
+  },
+  "walletTypeAndAccount": "{type} · {account}",
+  "@walletTypeAndAccount": {
+    "description": "Loại ví kèm số tài khoản đã che",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "account": {
+        "type": "String"
+      }
+    }
+  },
+  "compactThousand": "{value}k",
+  "@compactThousand": {
+    "description": "Số tiền rút gọn hàng nghìn trên trục biểu đồ",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "compactMillion": "{value} tr",
+  "@compactMillion": {
+    "description": "Số tiền rút gọn hàng triệu trên trục biểu đồ",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "compactBillion": "{value} tỷ",
+  "@compactBillion": {
+    "description": "Số tiền rút gọn hàng tỷ trên trục biểu đồ",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "walletTransferTo": "Chuyển sang {name}",
+  "@walletTransferTo": {
+    "description": "Chuyển khoản đi từ ví đang xem",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "walletTransferFrom": "Nhận từ {name}",
+  "@walletTransferFrom": {
+    "description": "Chuyển khoản đến ví đang xem",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

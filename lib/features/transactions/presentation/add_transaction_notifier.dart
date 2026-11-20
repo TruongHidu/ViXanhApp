@@ -80,16 +80,22 @@ final class AddTransactionState {
   );
 }
 
-/// `null` = thêm mới; có id = sửa giao dịch đó.
+/// Tham số mở màn: [editingId] `null` = thêm mới, có id = sửa giao dịch đó;
+/// [initialType] = tab chọn sẵn khi thêm mới (ví dụ "Chuyển tiền giữa các ví").
+typedef AddTransactionArgs = ({TransactionId? editingId, TransactionType initialType});
+
 final addTransactionProvider = AsyncNotifierProvider.autoDispose
-    .family<AddTransactionNotifier, AddTransactionState, TransactionId?>(
+    .family<AddTransactionNotifier, AddTransactionState, AddTransactionArgs>(
       AddTransactionNotifier.new,
     );
 
 final class AddTransactionNotifier extends AsyncNotifier<AddTransactionState> {
-  AddTransactionNotifier(this.editingId);
+  AddTransactionNotifier(AddTransactionArgs args)
+    : editingId = args.editingId,
+      initialType = args.initialType;
 
   final TransactionId? editingId;
+  final TransactionType initialType;
 
   bool get isEditing => editingId != null;
 
@@ -126,7 +132,7 @@ final class AddTransactionNotifier extends AsyncNotifier<AddTransactionState> {
         (await repo.recentCategories(type, limit: 1)).valueOrNull?.firstOrNull?.id;
 
     return AddTransactionState(
-      type: TransactionType.expense,
+      type: initialType,
       occurredAt: now,
       walletId: walletId,
       toWalletId: toWalletId,

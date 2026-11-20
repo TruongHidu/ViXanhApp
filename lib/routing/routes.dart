@@ -23,6 +23,25 @@ abstract final class Routes {
   static String editTransaction(String id) => '/edit/$id';
   static const editTransactionPattern = '/edit/:id';
 
+  /// Thêm giao dịch, mở sẵn tab Chuyển khoản.
+  static const addTransfer = '$addTransaction?$typeParam=transfer';
+
+  /// Tham số query chọn tab ban đầu của màn Thêm giao dịch.
+  static const typeParam = 'type';
+
+  /// Ví của tôi: con của [account] (đoạn path tương đối [walletsSegment]); mở phủ lên tab.
+  static const wallets = '$account/$walletsSegment';
+  static const walletsSegment = 'wallets';
+
+  /// Chi tiết ví: con của [wallets] (đoạn path tương đối [walletDetailSegment]).
+  static String walletDetail(String id) => '$wallets/$id';
+  static const walletDetailSegment = ':id';
+
+  /// Thêm / sửa ví: toàn màn hình.
+  static const newWallet = '/wallet-form';
+  static String editWallet(String id) => '$newWallet/$id';
+  static const editWalletPattern = '$newWallet/:id';
+
   /// Tên tham số id trong các path trên.
   static const idParam = 'id';
 }

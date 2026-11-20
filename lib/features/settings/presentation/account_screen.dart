@@ -31,6 +31,13 @@ class AccountScreen extends StatelessWidget {
           ),
           ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenGutter),
+            leading: const Icon(Icons.account_balance_wallet_outlined),
+            title: Text(l10n.walletsTitle),
+            trailing: const Icon(Icons.chevron_right_rounded),
+            onTap: () => context.push(Routes.wallets),
+          ),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenGutter),
             leading: const Icon(Icons.settings_outlined),
             title: Text(l10n.settingsTitle),
             trailing: const Icon(Icons.chevron_right_rounded),

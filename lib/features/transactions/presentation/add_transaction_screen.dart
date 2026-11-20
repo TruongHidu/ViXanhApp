@@ -39,20 +39,29 @@ final _recentCategoriesProvider = FutureProvider.autoDispose
 
 /// Màn Thêm giao dịch (mở từ nút "+"), hoặc Sửa khi có [transactionId].
 class AddTransactionScreen extends ConsumerStatefulWidget {
-  const AddTransactionScreen({this.transactionId, super.key});
+  const AddTransactionScreen({
+    this.transactionId,
+    this.initialType = TransactionType.expense,
+    super.key,
+  });
 
   final TransactionId? transactionId;
+
+  /// Tab chọn sẵn khi thêm mới.
+  final TransactionType initialType;
 
   @override
   ConsumerState<AddTransactionScreen> createState() => _AddTransactionScreenState();
 }
 
 class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
+  AddTransactionArgs get _args =>
+      (editingId: widget.transactionId, initialType: widget.initialType);
+
   final _note = TextEditingController();
   bool _noteLoaded = false;
 
-  AddTransactionNotifier get _notifier =>
-      ref.read(addTransactionProvider(widget.transactionId).notifier);
+  AddTransactionNotifier get _notifier => ref.read(addTransactionProvider(_args).notifier);
 
   @override
   void dispose() {
@@ -61,7 +70,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
   }
 
   Future<void> _save({required bool keepOpen}) async {
-    final state = ref.read(addTransactionProvider(widget.transactionId)).value;
+    final state = ref.read(addTransactionProvider(_args)).value;
     if (state == null) return;
     final messenger = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
@@ -129,7 +138,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final async = ref.watch(addTransactionProvider(widget.transactionId));
+    final async = ref.watch(addTransactionProvider(_args));
     final isEditing = widget.transactionId != null;
 
     final state = async.value;

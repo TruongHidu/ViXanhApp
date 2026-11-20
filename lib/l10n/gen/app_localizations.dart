@@ -992,6 +992,193 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'{weekday, select, 1{T2} 2{T3} 3{T4} 4{T5} 5{T6} 6{T7} 7{CN} other{}}'**
   String weekdayShort(String weekday);
+
+  /// Nhãn ô nhập 4 số cuối tài khoản ngân hàng hoặc thẻ
+  ///
+  /// In vi, this message translates to:
+  /// **'4 số cuối tài khoản / thẻ (không bắt buộc)'**
+  String get walletAccountLabel;
+
+  /// Gợi ý ô 4 số cuối
+  ///
+  /// In vi, this message translates to:
+  /// **'1234'**
+  String get walletAccountHint;
+
+  /// Lỗi khi 4 số cuối không hợp lệ
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhập đúng 4 chữ số cuối.'**
+  String get walletAccountInvalid;
+
+  /// Tiêu đề màn danh sách ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví của tôi'**
+  String get walletsTitle;
+
+  /// Tổng số dư dương của các ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Tổng tài sản'**
+  String get walletsTotalAssets;
+
+  /// Tổng số dư âm (đang nợ)
+  ///
+  /// In vi, this message translates to:
+  /// **'Nợ thẻ tín dụng'**
+  String get walletsDebt;
+
+  /// Tài sản trừ nợ
+  ///
+  /// In vi, this message translates to:
+  /// **'Tài sản ròng'**
+  String get walletsNetWorth;
+
+  /// Nút và tiêu đề màn thêm ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Thêm ví'**
+  String get walletAdd;
+
+  /// Nút mở màn chuyển khoản giữa các ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chuyển tiền giữa các ví'**
+  String get walletTransferBetween;
+
+  /// Tiêu đề màn sửa ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Sửa ví'**
+  String get walletEditTitle;
+
+  /// Nút lưu ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu'**
+  String get walletSave;
+
+  /// Lỗi chung khi lưu ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa lưu được ví. Vui lòng thử lại.'**
+  String get walletSaveFailed;
+
+  /// Nút mở menu của ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Tùy chọn ví'**
+  String get walletOptions;
+
+  /// Lệnh lưu trữ ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu trữ ví'**
+  String get walletArchive;
+
+  /// Tiêu đề hộp xác nhận lưu trữ ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu trữ ví {name}?'**
+  String walletArchiveConfirmTitle(String name);
+
+  /// Nội dung hộp xác nhận lưu trữ ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví sẽ ẩn khỏi danh sách và không chọn được khi thêm giao dịch. Giao dịch cũ vẫn được giữ.'**
+  String get walletArchiveConfirmBody;
+
+  /// Nút hủy trong hộp thoại
+  ///
+  /// In vi, this message translates to:
+  /// **'Hủy'**
+  String get cancel;
+
+  /// Snackbar sau khi lưu trữ ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã lưu trữ ví'**
+  String get walletArchived;
+
+  /// Lỗi khi lưu trữ ví cuối cùng
+  ///
+  /// In vi, this message translates to:
+  /// **'Cần giữ ít nhất một ví đang dùng.'**
+  String get walletArchiveLast;
+
+  /// Tiêu đề biểu đồ số dư của ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Số dư 30 ngày'**
+  String get walletBalance30Days;
+
+  /// Mô tả trợ năng của biểu đồ số dư
+  ///
+  /// In vi, this message translates to:
+  /// **'Biểu đồ số dư từ {from} đến {to}: thấp nhất {min} ngày {minDay}, cao nhất {max} ngày {maxDay}'**
+  String walletChartSummary(
+    String from,
+    String to,
+    String min,
+    String minDay,
+    String max,
+    String maxDay,
+  );
+
+  /// Tiêu đề danh sách giao dịch trong chi tiết ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Giao dịch của ví'**
+  String get walletTransactions;
+
+  /// Khi ví chưa có giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví này chưa có giao dịch nào.'**
+  String get walletNoTransactions;
+
+  /// Khi ví đã bị xóa
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví này không còn nữa.'**
+  String get walletNotFound;
+
+  /// Loại ví kèm số tài khoản đã che
+  ///
+  /// In vi, this message translates to:
+  /// **'{type} · {account}'**
+  String walletTypeAndAccount(String type, String account);
+
+  /// Số tiền rút gọn hàng nghìn trên trục biểu đồ
+  ///
+  /// In vi, this message translates to:
+  /// **'{value}k'**
+  String compactThousand(String value);
+
+  /// Số tiền rút gọn hàng triệu trên trục biểu đồ
+  ///
+  /// In vi, this message translates to:
+  /// **'{value} tr'**
+  String compactMillion(String value);
+
+  /// Số tiền rút gọn hàng tỷ trên trục biểu đồ
+  ///
+  /// In vi, this message translates to:
+  /// **'{value} tỷ'**
+  String compactBillion(String value);
+
+  /// Chuyển khoản đi từ ví đang xem
+  ///
+  /// In vi, this message translates to:
+  /// **'Chuyển sang {name}'**
+  String walletTransferTo(String name);
+
+  /// Chuyển khoản đến ví đang xem
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhận từ {name}'**
+  String walletTransferFrom(String name);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -499,4 +499,118 @@ class AppLocalizationsEn extends AppLocalizations {
     });
     return '$_temp0';
   }
+
+  @override
+  String get walletAccountLabel => 'Last 4 digits of account / card (optional)';
+
+  @override
+  String get walletAccountHint => '1234';
+
+  @override
+  String get walletAccountInvalid => 'Enter exactly the last 4 digits.';
+
+  @override
+  String get walletsTitle => 'My wallets';
+
+  @override
+  String get walletsTotalAssets => 'Total assets';
+
+  @override
+  String get walletsDebt => 'Credit card debt';
+
+  @override
+  String get walletsNetWorth => 'Net worth';
+
+  @override
+  String get walletAdd => 'Add wallet';
+
+  @override
+  String get walletTransferBetween => 'Transfer between wallets';
+
+  @override
+  String get walletEditTitle => 'Edit wallet';
+
+  @override
+  String get walletSave => 'Save';
+
+  @override
+  String get walletSaveFailed => 'Couldn\'t save the wallet. Please try again.';
+
+  @override
+  String get walletOptions => 'Wallet options';
+
+  @override
+  String get walletArchive => 'Archive wallet';
+
+  @override
+  String walletArchiveConfirmTitle(String name) {
+    return 'Archive $name?';
+  }
+
+  @override
+  String get walletArchiveConfirmBody =>
+      'The wallet will be hidden from lists and can\'t be picked for new transactions. Past transactions are kept.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get walletArchived => 'Wallet archived';
+
+  @override
+  String get walletArchiveLast => 'Keep at least one active wallet.';
+
+  @override
+  String get walletBalance30Days => 'Balance, last 30 days';
+
+  @override
+  String walletChartSummary(
+    String from,
+    String to,
+    String min,
+    String minDay,
+    String max,
+    String maxDay,
+  ) {
+    return 'Balance chart from $from to $to: lowest $min on $minDay, highest $max on $maxDay';
+  }
+
+  @override
+  String get walletTransactions => 'Wallet transactions';
+
+  @override
+  String get walletNoTransactions => 'No transactions in this wallet yet.';
+
+  @override
+  String get walletNotFound => 'This wallet no longer exists.';
+
+  @override
+  String walletTypeAndAccount(String type, String account) {
+    return '$type · $account';
+  }
+
+  @override
+  String compactThousand(String value) {
+    return '${value}k';
+  }
+
+  @override
+  String compactMillion(String value) {
+    return '${value}M';
+  }
+
+  @override
+  String compactBillion(String value) {
+    return '${value}B';
+  }
+
+  @override
+  String walletTransferTo(String name) {
+    return 'Transfer to $name';
+  }
+
+  @override
+  String walletTransferFrom(String name) {
+    return 'Received from $name';
+  }
 }

@@ -150,11 +150,16 @@ final class TransactionRepository {
   }
 
   /// [limit] giao dịch mới nhất (mọi kỳ), cho mục "Giao dịch gần đây".
-  Stream<List<TransactionListItem>> watchRecent({int limit = 5}) => _db
+  /// [walletId]: chỉ giao dịch của ví đó (là ví đi hoặc ví đến).
+  Stream<List<TransactionListItem>> watchRecent({int limit = 5, WalletId? walletId}) => _db
       .customSelect(
         'SELECT $_listColumns $_listJoins WHERE t.deleted_at IS NULL '
-        'ORDER BY t.occurred_at DESC, t.created_at DESC LIMIT ?',
-        variables: [Variable.withInt(limit)],
+        '${walletId == null ? '' : 'AND (t.wallet_id = ?2 OR t.to_wallet_id = ?2) '}'
+        'ORDER BY t.occurred_at DESC, t.created_at DESC LIMIT ?1',
+        variables: [
+          Variable.withInt(limit),
+          if (walletId != null) Variable.withString(walletId.value),
+        ],
         readsFrom: {_db.transactions, _db.wallets, _db.categories},
       )
       .watch()

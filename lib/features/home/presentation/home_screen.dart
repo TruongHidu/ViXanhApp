@@ -266,8 +266,7 @@ class _WalletsSection extends ConsumerWidget {
     final balances = ref.watch(walletBalancesProvider).value ?? const {};
     if (wallets.isEmpty) return const SizedBox.shrink();
 
-    // Màn danh sách ví làm ở bước sau; tạm thời "Xem tất cả" mở tab Tài khoản.
-    void openWallets() => context.go(Routes.account);
+    void openWallets() => context.push(Routes.wallets);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -289,7 +288,7 @@ class _WalletsSection extends ConsumerWidget {
                     name: w.name,
                     amount: mask(formatMoney(Money(balances[w.id] ?? w.initialBalance))),
                     negative: (balances[w.id] ?? w.initialBalance) < 0,
-                    onTap: openWallets,
+                    onTap: () => context.push(Routes.walletDetail(w.id.value)),
                   ),
                 ],
               ],
