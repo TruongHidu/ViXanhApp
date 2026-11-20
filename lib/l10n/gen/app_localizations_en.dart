@@ -328,4 +328,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get txnLoadFailed => 'Couldn\'t open the transaction.';
+
+  @override
+  String get txnSearchTooltip => 'Search transactions';
+
+  @override
+  String get txnSearchHint => 'Search notes, names, categories';
+
+  @override
+  String get txnSearchClose => 'Close search';
+
+  @override
+  String get txnFilterTooltip => 'Filter by category';
+
+  @override
+  String get txnFilterGroupLabel => 'Filter transactions';
+
+  @override
+  String txnFilterClearCategory(String name) {
+    return 'Clear filter $name';
+  }
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get previousMonth => 'Previous month';
+
+  @override
+  String get nextMonth => 'Next month';
+
+  @override
+  String monthLabel(int month, int year) {
+    return '$month/$year';
+  }
+
+  @override
+  String periodRange(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String get summaryIncome => 'Income';
+
+  @override
+  String get summaryExpense => 'Expense';
+
+  @override
+  String get summaryRemaining => 'Remaining';
+
+  @override
+  String get txnNoMatch => 'No transactions match this filter.';
+
+  @override
+  String get txnSwipeHint => 'Swipe a row left to edit or delete';
+
+  @override
+  String get txnEmptyMonthTitle => 'No transactions this month yet';
+
+  @override
+  String get txnEmptyMonthBody => 'Log your first one — it only takes a few seconds.';
+
+  @override
+  String get txnAddFirst => 'Add your first transaction';
+
+  @override
+  String get txnEdit => 'Edit';
+
+  @override
+  String get txnDelete => 'Delete';
+
+  @override
+  String get txnDeleted => 'Transaction deleted';
+
+  @override
+  String get txnDeleteFailed => 'Couldn\'t delete the transaction.';
+
+  @override
+  String get txnDetailTitle => 'Transaction details';
+
+  @override
+  String get txnEditAction => 'Edit';
+
+  @override
+  String get txnNotFound => 'This transaction no longer exists.';
+
+  @override
+  String get txnFieldSource => 'Source';
+
+  @override
+  String get txnSourceManual => 'Entered manually';
+
+  @override
+  String get txnSourceNotification => 'Bank notification';
+
+  @override
+  String get txnSourceWebhook => 'Sent by bank';
+
+  @override
+  String get txnSourceRecurring => 'Recurring transaction';
+
+  @override
+  String get txnSourceImport => 'Imported from file';
+
+  @override
+  String get txnLoadingLabel => 'Loading transactions';
 }

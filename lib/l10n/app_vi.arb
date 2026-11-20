@@ -455,5 +455,158 @@
   "txnLoadFailed": "Không mở được giao dịch.",
   "@txnLoadFailed": {
     "description": "Lỗi khi không tải được giao dịch để sửa"
+  },
+  "txnSearchTooltip": "Tìm kiếm giao dịch",
+  "@txnSearchTooltip": {
+    "description": "Nút mở ô tìm kiếm giao dịch"
+  },
+  "txnSearchHint": "Tìm theo ghi chú, tên, danh mục",
+  "@txnSearchHint": {
+    "description": "Gợi ý trong ô tìm kiếm giao dịch"
+  },
+  "txnSearchClose": "Đóng tìm kiếm",
+  "@txnSearchClose": {
+    "description": "Nút đóng ô tìm kiếm"
+  },
+  "txnFilterTooltip": "Lọc theo danh mục",
+  "@txnFilterTooltip": {
+    "description": "Nút mở bảng chọn danh mục để lọc"
+  },
+  "txnFilterGroupLabel": "Lọc giao dịch",
+  "@txnFilterGroupLabel": {
+    "description": "Nhãn trợ năng nhóm chip lọc"
+  },
+  "txnFilterClearCategory": "Bỏ lọc {name}",
+  "@txnFilterClearCategory": {
+    "description": "Nhãn trợ năng chip danh mục đang lọc",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "filterAll": "Tất cả",
+  "@filterAll": {
+    "description": "Chip bỏ lọc loại/ví"
+  },
+  "previousMonth": "Tháng trước",
+  "@previousMonth": {
+    "description": "Nút xem tháng trước"
+  },
+  "nextMonth": "Tháng sau",
+  "@nextMonth": {
+    "description": "Nút xem tháng sau"
+  },
+  "monthLabel": "Tháng {month}/{year}",
+  "@monthLabel": {
+    "description": "Nhãn tháng tài chính đang xem",
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "periodRange": "{from} – {to}",
+  "@periodRange": {
+    "description": "Khoảng ngày của kỳ khi tháng không bắt đầu từ ngày 1",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryIncome": "Thu",
+  "@summaryIncome": {
+    "description": "Tổng thu của kỳ"
+  },
+  "summaryExpense": "Chi",
+  "@summaryExpense": {
+    "description": "Tổng chi của kỳ"
+  },
+  "summaryRemaining": "Còn lại",
+  "@summaryRemaining": {
+    "description": "Thu trừ chi của kỳ"
+  },
+  "txnNoMatch": "Không có giao dịch phù hợp với bộ lọc này.",
+  "@txnNoMatch": {
+    "description": "Khi bộ lọc không ra kết quả"
+  },
+  "txnSwipeHint": "Vuốt sang trái một dòng để sửa hoặc xóa",
+  "@txnSwipeHint": {
+    "description": "Gợi ý cuối danh sách giao dịch"
+  },
+  "txnEmptyMonthTitle": "Chưa có giao dịch nào trong tháng này",
+  "@txnEmptyMonthTitle": {
+    "description": "Tiêu đề trạng thái trống của danh sách giao dịch"
+  },
+  "txnEmptyMonthBody": "Ghi lại khoản đầu tiên, chỉ mất vài giây thôi.",
+  "@txnEmptyMonthBody": {
+    "description": "Mô tả trạng thái trống của danh sách giao dịch"
+  },
+  "txnAddFirst": "Thêm giao dịch đầu tiên",
+  "@txnAddFirst": {
+    "description": "Nút ở trạng thái trống"
+  },
+  "txnEdit": "Sửa",
+  "@txnEdit": {
+    "description": "Hành động sửa khi vuốt dòng giao dịch"
+  },
+  "txnDelete": "Xóa",
+  "@txnDelete": {
+    "description": "Hành động xóa giao dịch"
+  },
+  "txnDeleted": "Đã xóa giao dịch",
+  "@txnDeleted": {
+    "description": "Snackbar sau khi xóa giao dịch"
+  },
+  "txnDeleteFailed": "Chưa xóa được giao dịch.",
+  "@txnDeleteFailed": {
+    "description": "Lỗi khi xóa giao dịch"
+  },
+  "txnDetailTitle": "Chi tiết giao dịch",
+  "@txnDetailTitle": {
+    "description": "Tiêu đề màn chi tiết giao dịch"
+  },
+  "txnEditAction": "Chỉnh sửa",
+  "@txnEditAction": {
+    "description": "Nút mở màn sửa giao dịch"
+  },
+  "txnNotFound": "Giao dịch này không còn nữa.",
+  "@txnNotFound": {
+    "description": "Khi giao dịch đã bị xóa"
+  },
+  "txnFieldSource": "Nguồn",
+  "@txnFieldSource": {
+    "description": "Nhãn dòng nguồn của giao dịch"
+  },
+  "txnSourceManual": "Nhập tay",
+  "@txnSourceManual": {
+    "description": "Nguồn: người dùng tự nhập"
+  },
+  "txnSourceNotification": "Thông báo ngân hàng",
+  "@txnSourceNotification": {
+    "description": "Nguồn: đọc từ thông báo ngân hàng"
+  },
+  "txnSourceWebhook": "Ngân hàng gửi về",
+  "@txnSourceWebhook": {
+    "description": "Nguồn: webhook ngân hàng"
+  },
+  "txnSourceRecurring": "Giao dịch định kỳ",
+  "@txnSourceRecurring": {
+    "description": "Nguồn: tạo từ giao dịch định kỳ"
+  },
+  "txnSourceImport": "Nhập từ file",
+  "@txnSourceImport": {
+    "description": "Nguồn: nhập từ file"
+  },
+  "txnLoadingLabel": "Đang tải giao dịch",
+  "@txnLoadingLabel": {
+    "description": "Nhãn trợ năng khi danh sách đang tải"
   }
 }

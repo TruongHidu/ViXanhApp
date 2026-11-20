@@ -326,4 +326,109 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get txnLoadFailed => 'Không mở được giao dịch.';
+
+  @override
+  String get txnSearchTooltip => 'Tìm kiếm giao dịch';
+
+  @override
+  String get txnSearchHint => 'Tìm theo ghi chú, tên, danh mục';
+
+  @override
+  String get txnSearchClose => 'Đóng tìm kiếm';
+
+  @override
+  String get txnFilterTooltip => 'Lọc theo danh mục';
+
+  @override
+  String get txnFilterGroupLabel => 'Lọc giao dịch';
+
+  @override
+  String txnFilterClearCategory(String name) {
+    return 'Bỏ lọc $name';
+  }
+
+  @override
+  String get filterAll => 'Tất cả';
+
+  @override
+  String get previousMonth => 'Tháng trước';
+
+  @override
+  String get nextMonth => 'Tháng sau';
+
+  @override
+  String monthLabel(int month, int year) {
+    return 'Tháng $month/$year';
+  }
+
+  @override
+  String periodRange(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String get summaryIncome => 'Thu';
+
+  @override
+  String get summaryExpense => 'Chi';
+
+  @override
+  String get summaryRemaining => 'Còn lại';
+
+  @override
+  String get txnNoMatch => 'Không có giao dịch phù hợp với bộ lọc này.';
+
+  @override
+  String get txnSwipeHint => 'Vuốt sang trái một dòng để sửa hoặc xóa';
+
+  @override
+  String get txnEmptyMonthTitle => 'Chưa có giao dịch nào trong tháng này';
+
+  @override
+  String get txnEmptyMonthBody => 'Ghi lại khoản đầu tiên, chỉ mất vài giây thôi.';
+
+  @override
+  String get txnAddFirst => 'Thêm giao dịch đầu tiên';
+
+  @override
+  String get txnEdit => 'Sửa';
+
+  @override
+  String get txnDelete => 'Xóa';
+
+  @override
+  String get txnDeleted => 'Đã xóa giao dịch';
+
+  @override
+  String get txnDeleteFailed => 'Chưa xóa được giao dịch.';
+
+  @override
+  String get txnDetailTitle => 'Chi tiết giao dịch';
+
+  @override
+  String get txnEditAction => 'Chỉnh sửa';
+
+  @override
+  String get txnNotFound => 'Giao dịch này không còn nữa.';
+
+  @override
+  String get txnFieldSource => 'Nguồn';
+
+  @override
+  String get txnSourceManual => 'Nhập tay';
+
+  @override
+  String get txnSourceNotification => 'Thông báo ngân hàng';
+
+  @override
+  String get txnSourceWebhook => 'Ngân hàng gửi về';
+
+  @override
+  String get txnSourceRecurring => 'Giao dịch định kỳ';
+
+  @override
+  String get txnSourceImport => 'Nhập từ file';
+
+  @override
+  String get txnLoadingLabel => 'Đang tải giao dịch';
 }

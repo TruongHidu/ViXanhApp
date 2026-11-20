@@ -6,8 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart';
 import 'package:vi_xanh_app/app.dart';
 import 'package:vi_xanh_app/core/clock.dart';
+import 'package:vi_xanh_app/core/core_providers.dart';
 import 'package:vi_xanh_app/core/ids.dart';
 import 'package:vi_xanh_app/data/database.dart';
+import 'package:vi_xanh_app/data/sql_functions.dart';
 import 'package:vi_xanh_app/features/settings/data/settings_repository.dart';
 import 'package:vi_xanh_app/services/auth_service.dart';
 import 'package:vi_xanh_app/services/backup_service.dart';
@@ -19,18 +21,22 @@ import 'package:vi_xanh_app/services/sync_service.dart';
 import 'fakes/fakes.dart';
 
 AppDatabase inMemoryDatabase({Clock? clock, IdGenerator? ids}) => AppDatabase(
-  DatabaseConnection(NativeDatabase.memory(), closeStreamsSynchronously: true),
+  DatabaseConnection(
+    NativeDatabase.memory(setup: registerSqlFunctions),
+    closeStreamsSynchronously: true,
+  ),
   clock: clock ?? const SystemClock(),
   ids: ids ?? const UuidIdGenerator(),
 );
 
 /// Cùng seam DI với bootstrap(): override ĐỦ mọi provider hạ tầng bằng fake/noop,
 /// để test không bao giờ chạm platform channel hay file thật.
-List<Override> testOverrides({required AppDatabase db, KeyValueStore? store}) {
+List<Override> testOverrides({required AppDatabase db, KeyValueStore? store, Clock? clock}) {
   final kv = store ?? FakeKeyValueStore();
   final settings = SettingsRepository(kv)..load();
   return [
     appDatabaseProvider.overrideWithValue(db),
+    if (clock != null) clockProvider.overrideWithValue(clock),
     keyValueStoreProvider.overrideWithValue(kv),
     settingsRepositoryProvider.overrideWithValue(settings),
     notificationServiceProvider.overrideWithValue(const NoopNotificationService()),
@@ -41,8 +47,8 @@ List<Override> testOverrides({required AppDatabase db, KeyValueStore? store}) {
   ];
 }
 
-Widget buildTestApp(AppDatabase db, {KeyValueStore? store}) => ProviderScope(
-  overrides: testOverrides(db: db, store: store),
+Widget buildTestApp(AppDatabase db, {KeyValueStore? store, Clock? clock}) => ProviderScope(
+  overrides: testOverrides(db: db, store: store, clock: clock),
   child: const App(),
 );
 

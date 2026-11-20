@@ -10,12 +10,16 @@ class EmptyState extends StatelessWidget {
   const EmptyState({
     required this.icon,
     required this.message,
+    this.title,
     this.actionLabel,
     this.onAction,
     super.key,
   }) : assert((actionLabel == null) == (onAction == null), 'actionLabel và onAction đi cùng nhau');
 
   final IconData icon;
+
+  /// Câu đậm phía trên [message] (tùy chọn).
+  final String? title;
   final String message;
   final String? actionLabel;
   final VoidCallback? onAction;
@@ -52,6 +56,10 @@ class EmptyState extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
+              if (title case final t?) ...[
+                Text(t, textAlign: TextAlign.center, style: theme.textTheme.titleMedium),
+                const SizedBox(height: AppSpacing.sm),
+              ],
               Text(
                 message,
                 textAlign: TextAlign.center,

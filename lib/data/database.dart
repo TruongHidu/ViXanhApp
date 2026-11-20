@@ -11,6 +11,7 @@ import 'daos/categories_dao.dart';
 import 'daos/transactions_dao.dart';
 import 'daos/wallets_dao.dart';
 import 'migrations/migration_strategy.dart';
+import 'sql_functions.dart';
 import 'tables/tables.dart';
 
 part 'database.g.dart';
@@ -51,6 +52,7 @@ AppDatabase openAppDatabase() => AppDatabase(
 /// Phải là hàm top-level vì có thể được gửi sang isolate nền.
 void _configureNativeDatabase(CommonDatabase db) {
   db.execute('PRAGMA journal_mode = WAL');
+  registerSqlFunctions(db);
 }
 
 /// Placeholder: ném lỗi cho tới khi `bootstrap()` override.

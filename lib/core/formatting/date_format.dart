@@ -37,4 +37,20 @@ final class DateLabelFormatter {
 
   /// Giờ 24h: "14:30".
   String timeLabel(DateTime at) => DateFormat('HH:mm', _locale).format(at.toLocal());
+
+  /// Tiêu đề nhóm ngày trong danh sách: "Hôm nay · Thứ Tư 18/11", "Hôm qua · Thứ Ba 17/11",
+  /// ngày khác "Thứ Hai, 16/11/2026".
+  String groupHeader(DateTime at) {
+    final label = dayLabel(at);
+    final full = DateFormat('EEEE, dd/MM/yyyy', _locale).format(at.toLocal());
+    if (label == full) return full;
+    return '$label · ${DateFormat('EEEE dd/MM', _locale).format(at.toLocal())}';
+  }
+
+  /// Thời điểm đầy đủ ở màn chi tiết: "08:15, Thứ Tư 18/11/2026".
+  String fullDateTime(DateTime at) =>
+      DateFormat('HH:mm, EEEE dd/MM/yyyy', _locale).format(at.toLocal());
+
+  /// Ngày ngắn "25/10" (dùng cho khoảng kỳ "25/10 – 24/11").
+  String shortDate(DateTime at) => DateFormat('dd/MM', _locale).format(at.toLocal());
 }

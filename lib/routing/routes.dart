@@ -14,4 +14,15 @@ abstract final class Routes {
 
   /// Mở toàn màn hình, che thanh điều hướng.
   static const addTransaction = '/add';
+
+  /// Chi tiết giao dịch: con của [transactions] (đoạn path tương đối [transactionDetailSegment]).
+  static String transactionDetail(String id) => '$transactions/$id';
+  static const transactionDetailSegment = ':id';
+
+  /// Sửa giao dịch: toàn màn hình như [addTransaction].
+  static String editTransaction(String id) => '/edit/$id';
+  static const editTransactionPattern = '/edit/:id';
+
+  /// Tên tham số id trong các path trên.
+  static const idParam = 'id';
 }

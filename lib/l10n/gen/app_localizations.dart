@@ -698,6 +698,204 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Không mở được giao dịch.'**
   String get txnLoadFailed;
+
+  /// Nút mở ô tìm kiếm giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Tìm kiếm giao dịch'**
+  String get txnSearchTooltip;
+
+  /// Gợi ý trong ô tìm kiếm giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Tìm theo ghi chú, tên, danh mục'**
+  String get txnSearchHint;
+
+  /// Nút đóng ô tìm kiếm
+  ///
+  /// In vi, this message translates to:
+  /// **'Đóng tìm kiếm'**
+  String get txnSearchClose;
+
+  /// Nút mở bảng chọn danh mục để lọc
+  ///
+  /// In vi, this message translates to:
+  /// **'Lọc theo danh mục'**
+  String get txnFilterTooltip;
+
+  /// Nhãn trợ năng nhóm chip lọc
+  ///
+  /// In vi, this message translates to:
+  /// **'Lọc giao dịch'**
+  String get txnFilterGroupLabel;
+
+  /// Nhãn trợ năng chip danh mục đang lọc
+  ///
+  /// In vi, this message translates to:
+  /// **'Bỏ lọc {name}'**
+  String txnFilterClearCategory(String name);
+
+  /// Chip bỏ lọc loại/ví
+  ///
+  /// In vi, this message translates to:
+  /// **'Tất cả'**
+  String get filterAll;
+
+  /// Nút xem tháng trước
+  ///
+  /// In vi, this message translates to:
+  /// **'Tháng trước'**
+  String get previousMonth;
+
+  /// Nút xem tháng sau
+  ///
+  /// In vi, this message translates to:
+  /// **'Tháng sau'**
+  String get nextMonth;
+
+  /// Nhãn tháng tài chính đang xem
+  ///
+  /// In vi, this message translates to:
+  /// **'Tháng {month}/{year}'**
+  String monthLabel(int month, int year);
+
+  /// Khoảng ngày của kỳ khi tháng không bắt đầu từ ngày 1
+  ///
+  /// In vi, this message translates to:
+  /// **'{from} – {to}'**
+  String periodRange(String from, String to);
+
+  /// Tổng thu của kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'Thu'**
+  String get summaryIncome;
+
+  /// Tổng chi của kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi'**
+  String get summaryExpense;
+
+  /// Thu trừ chi của kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'Còn lại'**
+  String get summaryRemaining;
+
+  /// Khi bộ lọc không ra kết quả
+  ///
+  /// In vi, this message translates to:
+  /// **'Không có giao dịch phù hợp với bộ lọc này.'**
+  String get txnNoMatch;
+
+  /// Gợi ý cuối danh sách giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Vuốt sang trái một dòng để sửa hoặc xóa'**
+  String get txnSwipeHint;
+
+  /// Tiêu đề trạng thái trống của danh sách giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa có giao dịch nào trong tháng này'**
+  String get txnEmptyMonthTitle;
+
+  /// Mô tả trạng thái trống của danh sách giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Ghi lại khoản đầu tiên, chỉ mất vài giây thôi.'**
+  String get txnEmptyMonthBody;
+
+  /// Nút ở trạng thái trống
+  ///
+  /// In vi, this message translates to:
+  /// **'Thêm giao dịch đầu tiên'**
+  String get txnAddFirst;
+
+  /// Hành động sửa khi vuốt dòng giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Sửa'**
+  String get txnEdit;
+
+  /// Hành động xóa giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Xóa'**
+  String get txnDelete;
+
+  /// Snackbar sau khi xóa giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã xóa giao dịch'**
+  String get txnDeleted;
+
+  /// Lỗi khi xóa giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa xóa được giao dịch.'**
+  String get txnDeleteFailed;
+
+  /// Tiêu đề màn chi tiết giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Chi tiết giao dịch'**
+  String get txnDetailTitle;
+
+  /// Nút mở màn sửa giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Chỉnh sửa'**
+  String get txnEditAction;
+
+  /// Khi giao dịch đã bị xóa
+  ///
+  /// In vi, this message translates to:
+  /// **'Giao dịch này không còn nữa.'**
+  String get txnNotFound;
+
+  /// Nhãn dòng nguồn của giao dịch
+  ///
+  /// In vi, this message translates to:
+  /// **'Nguồn'**
+  String get txnFieldSource;
+
+  /// Nguồn: người dùng tự nhập
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhập tay'**
+  String get txnSourceManual;
+
+  /// Nguồn: đọc từ thông báo ngân hàng
+  ///
+  /// In vi, this message translates to:
+  /// **'Thông báo ngân hàng'**
+  String get txnSourceNotification;
+
+  /// Nguồn: webhook ngân hàng
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngân hàng gửi về'**
+  String get txnSourceWebhook;
+
+  /// Nguồn: tạo từ giao dịch định kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'Giao dịch định kỳ'**
+  String get txnSourceRecurring;
+
+  /// Nguồn: nhập từ file
+  ///
+  /// In vi, this message translates to:
+  /// **'Nhập từ file'**
+  String get txnSourceImport;
+
+  /// Nhãn trợ năng khi danh sách đang tải
+  ///
+  /// In vi, this message translates to:
+  /// **'Đang tải giao dịch'**
+  String get txnLoadingLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

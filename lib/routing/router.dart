@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/ids.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/reports/presentation/reports_screen.dart';
@@ -9,6 +10,7 @@ import '../features/settings/presentation/account_screen.dart';
 import '../features/settings/presentation/settings_notifier.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../features/transactions/presentation/add_transaction_screen.dart';
+import '../features/transactions/presentation/transaction_detail_screen.dart';
 import '../features/transactions/presentation/transactions_screen.dart';
 import 'app_shell.dart';
 import 'routes.dart';
@@ -52,6 +54,14 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: Routes.transactions,
                 builder: (context, state) => const TransactionsScreen(),
+                routes: [
+                  GoRoute(
+                    path: Routes.transactionDetailSegment,
+                    builder: (context, state) => TransactionDetailScreen(
+                      id: TransactionId(state.pathParameters[Routes.idParam]!),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -83,6 +93,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: rootKey,
         pageBuilder: (context, state) =>
             const MaterialPage(fullscreenDialog: true, child: AddTransactionScreen()),
+      ),
+      GoRoute(
+        path: Routes.editTransactionPattern,
+        parentNavigatorKey: rootKey,
+        pageBuilder: (context, state) => MaterialPage(
+          fullscreenDialog: true,
+          child: AddTransactionScreen(
+            transactionId: TransactionId(state.pathParameters[Routes.idParam]!),
+          ),
+        ),
       ),
     ],
   );
