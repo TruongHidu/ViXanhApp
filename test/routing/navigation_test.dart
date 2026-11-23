@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vi_xanh_app/features/home/presentation/home_screen.dart';
 import 'package:vi_xanh_app/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:vi_xanh_app/features/categories/presentation/categories_screen.dart';
 import 'package:vi_xanh_app/features/reports/presentation/reports_screen.dart';
 import 'package:vi_xanh_app/features/settings/presentation/account_screen.dart';
-import 'package:vi_xanh_app/features/settings/presentation/settings_screen.dart';
 import 'package:vi_xanh_app/features/transactions/presentation/add_transaction_screen.dart';
 import 'package:vi_xanh_app/features/transactions/presentation/transactions_screen.dart';
+import 'package:vi_xanh_app/features/wallets/presentation/wallets_screen.dart';
 import 'package:vi_xanh_app/theme/widgets/app_bottom_bar.dart';
 
 import '../fakes/fakes.dart';
@@ -76,30 +77,28 @@ void main() {
     expect(find.byType(AppBottomBar), findsOneWidget);
   });
 
-  testWidgets('Tài khoản → Cài đặt → Back → Tài khoản', (tester) async {
+  for (final (label, screen) in [('Ví của tôi', WalletsScreen), ('Danh mục', CategoriesScreen)]) {
+    testWidgets('Tài khoản → $label (che thanh dưới) → Back → Tài khoản', (tester) async {
+      await pumpApp(tester);
+      await tester.tap(tab('Tài khoản'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+      expect(find.byType(screen), findsOneWidget);
+      expect(find.byType(AppBottomBar), findsNothing);
+
+      await pressBack(tester);
+      expect(find.byType(screen), findsNothing);
+      expect(find.byType(AccountScreen), findsOneWidget);
+      expect(find.byType(AppBottomBar), findsOneWidget);
+    });
+  }
+
+  testWidgets('không còn route Cài đặt cũ /account/settings', (tester) async {
     await pumpApp(tester);
     await tester.tap(tab('Tài khoản'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Cài đặt'));
-    await tester.pumpAndSettle();
-    expect(find.byType(SettingsScreen), findsOneWidget);
-
-    await pressBack(tester);
-    expect(find.byType(SettingsScreen), findsNothing);
-    expect(find.byType(AccountScreen), findsOneWidget);
-  });
-
-  testWidgets('bấm lại tab đang mở → về màn gốc của tab', (tester) async {
-    await pumpApp(tester);
-    await tester.tap(tab('Tài khoản'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Cài đặt'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(tab('Tài khoản'));
-    await tester.pumpAndSettle();
-    expect(find.byType(SettingsScreen), findsNothing);
-    expect(find.byType(AccountScreen), findsOneWidget);
+    expect(find.text('Cài đặt'), findsNothing);
   });
 
   testWidgets('Back ở tab khác → về Tổng quan; Back ở Tổng quan → để hệ thống thoát app', (

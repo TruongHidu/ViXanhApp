@@ -6,12 +6,6 @@ import '../../settings/presentation/settings_notifier.dart';
 import '../../transactions/data/transaction_repository.dart';
 import '../../transactions/domain/transaction_list_item.dart';
 
-/// Tháng tài chính hiện tại (theo ngày bắt đầu tháng trong Cài đặt).
-final currentMonthRangeProvider = Provider.autoDispose<DateRange>((ref) {
-  final startDay = ref.watch(appPreferencesProvider.select((p) => p.monthStartDay));
-  return FinancialMonth.containing(ref.watch(clockProvider).now(), startDay).range(startDay);
-});
-
 /// 7 ngày gần nhất tính cả hôm nay: [0h sáu ngày trước, 0h ngày mai).
 final last7DaysRangeProvider = Provider.autoDispose<DateRange>((ref) {
   final now = ref.watch(clockProvider).now().toLocal();
@@ -21,10 +15,16 @@ final last7DaysRangeProvider = Provider.autoDispose<DateRange>((ref) {
   );
 });
 
-final homeMonthTotalsProvider = StreamProvider.autoDispose<PeriodTotals>(
-  (ref) =>
-      ref.watch(transactionRepositoryProvider).watchTotals(ref.watch(currentMonthRangeProvider)),
-);
+/// Thu / chi của tháng tài chính hiện tại (theo ngày bắt đầu tháng trong Cài đặt).
+///
+/// Tính khoảng tháng ngay tại đây, không qua một provider trung gian: Tổng quan thường nằm
+/// ở tab ẩn (bị Riverpod tạm dừng), và chuỗi phụ thuộc nhiều tầng bị flush giữa lúc build
+/// khi đổi ngày bắt đầu tháng từ Tài khoản.
+final homeMonthTotalsProvider = StreamProvider.autoDispose<PeriodTotals>((ref) {
+  final startDay = ref.watch(appPreferencesProvider.select((p) => p.monthStartDay));
+  final range = FinancialMonth.containing(ref.watch(clockProvider).now(), startDay).range(startDay);
+  return ref.watch(transactionRepositoryProvider).watchTotals(range);
+});
 
 final homeDailyExpenseProvider = StreamProvider.autoDispose<Map<DateTime, int>>(
   (ref) =>

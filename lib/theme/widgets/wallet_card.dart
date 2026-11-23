@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app_colors.dart';
 import '../tokens.dart';
+import 'amount_text.dart';
 
 /// Thẻ ví nhỏ trong dãy cuộn ngang (Tổng quan): icon + tên ví, số dư bên dưới.
 class WalletCard extends StatelessWidget {
@@ -75,7 +76,7 @@ class WalletCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: AppSpacing.sm),
-                Text(
+                AmountText(
                   amount,
                   style: theme.textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,

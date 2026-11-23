@@ -63,3 +63,30 @@ class AppShell extends StatelessWidget {
     );
   }
 }
+
+/// Chứa navigator của 4 tab, chỉ hiện tab đang chọn và giữ nguyên state các tab còn lại.
+///
+/// Khác `StatefulShellRoute.indexedStack`: KHÔNG tắt TickerMode của tab ẩn. Riverpod 3 tạm
+/// dừng provider của widget có TickerMode tắt; khi tab hiện lại, chuỗi provider bị flush ngay
+/// giữa lúc build (lỗi "setState() called during build", số liệu cũ không cập nhật — gặp khi đổi
+/// ngày bắt đầu tháng ở Tài khoản rồi quay lại Tổng quan / Báo cáo). Các tab không có animation
+/// lặp nên giữ ticker chạy không tốn gì đáng kể.
+class BranchStack extends StatelessWidget {
+  const BranchStack({required this.currentIndex, required this.children, super.key});
+
+  final int currentIndex;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) => Stack(
+    fit: StackFit.expand,
+    children: [
+      for (final (i, child) in children.indexed)
+        Offstage(
+          offstage: i != currentIndex,
+          // Tab ẩn: không nhận focus bàn phím; Offstage đã chặn chạm và ngữ nghĩa.
+          child: ExcludeFocus(excluding: i != currentIndex, child: child),
+        ),
+    ],
+  );
+}

@@ -87,6 +87,31 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase> with _$CategoriesDaoMi
     return count > 0;
   });
 
+  /// Đặt lại `sort_order` theo thứ tự [ordered] (0, 1, 2…) trong một transaction.
+  /// Chỉ đổi các danh mục có trong danh sách; nơi gọi đảm bảo chúng cùng cấp.
+  Future<void> reorder(List<CategoryId> ordered) => transaction(() async {
+    final now = attachedDatabase.clock.now();
+    for (final (index, id) in ordered.indexed) {
+      await (update(categories)..where((c) => c.id.equalsValue(id))).write(
+        CategoriesCompanion(sortOrder: Value(index), updatedAt: Value(now)),
+      );
+    }
+  });
+
+  /// `sort_order` để đặt một danh mục mới xuống cuối nhóm cùng cấp: lớn nhất hiện có + 1
+  /// ([parentId] `null` = danh mục gốc). Seed đánh số theo cả danh sách nên không dùng số lượng.
+  Future<int> nextSortOrder(CategoryType type, CategoryId? parentId) async {
+    final query = select(categories)
+      ..where(
+        (c) =>
+            c.type.equalsValue(type) &
+            c.deletedAt.isNull() &
+            (parentId == null ? c.parentId.isNull() : c.parentId.equalsValue(parentId)),
+      );
+    final orders = (await query.get()).map((c) => c.sortOrder);
+    return orders.isEmpty ? 0 : orders.reduce((a, b) => a > b ? a : b) + 1;
+  }
+
   /// Xóa mềm danh mục và mọi danh mục con của nó.
   Future<bool> softDelete(CategoryId id) => transaction(() async {
     final now = attachedDatabase.clock.now();

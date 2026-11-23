@@ -3,13 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/enums.dart';
+import '../core/financial_month.dart';
 import '../core/ids.dart';
+import '../features/categories/presentation/categories_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
+import '../features/reports/presentation/report_category_screen.dart';
 import '../features/reports/presentation/reports_screen.dart';
 import '../features/settings/presentation/account_screen.dart';
 import '../features/settings/presentation/settings_notifier.dart';
-import '../features/settings/presentation/settings_screen.dart';
 import '../features/transactions/presentation/add_transaction_screen.dart';
 import '../features/transactions/presentation/transaction_detail_screen.dart';
 import '../features/transactions/presentation/transactions_screen.dart';
@@ -43,8 +45,10 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
     routes: [
       GoRoute(path: Routes.onboarding, builder: (context, state) => const OnboardingScreen()),
-      StatefulShellRoute.indexedStack(
+      StatefulShellRoute(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
+        navigatorContainerBuilder: (context, shell, children) =>
+            BranchStack(currentIndex: shell.currentIndex, children: children),
         branches: [
           StatefulShellBranch(
             navigatorKey: branchKey('overview'),
@@ -75,7 +79,29 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             navigatorKey: branchKey('reports'),
             routes: [
-              GoRoute(path: Routes.reports, builder: (context, state) => const ReportsScreen()),
+              GoRoute(
+                path: Routes.reports,
+                builder: (context, state) => const ReportsScreen(),
+                routes: [
+                  GoRoute(
+                    path: Routes.reportCategorySegment,
+                    parentNavigatorKey: rootKey,
+                    builder: (context, state) {
+                      final q = state.uri.queryParameters;
+                      DateTime at(String key) =>
+                          DateTime.fromMillisecondsSinceEpoch(int.tryParse(q[key] ?? '') ?? 0);
+                      return ReportCategoryScreen(
+                        categoryId: CategoryId(state.pathParameters[Routes.idParam]!),
+                        range: DateRange(at(Routes.fromParam), at(Routes.toParam)),
+                        type:
+                            TransactionType.values.asNameMap()[q[Routes.typeParam]] ??
+                            TransactionType.expense,
+                        title: q[Routes.titleParam] ?? '',
+                      );
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
           StatefulShellBranch(
@@ -86,8 +112,9 @@ final routerProvider = Provider<GoRouter>((ref) {
                 builder: (context, state) => const AccountScreen(),
                 routes: [
                   GoRoute(
-                    path: Routes.settingsSegment,
-                    builder: (context, state) => const SettingsScreen(),
+                    path: Routes.categoriesSegment,
+                    parentNavigatorKey: rootKey,
+                    builder: (context, state) => const CategoriesScreen(),
                   ),
                   // Ví phủ lên khung tab: thiết kế không có thanh điều hướng ở các màn này.
                   GoRoute(

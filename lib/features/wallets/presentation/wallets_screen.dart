@@ -10,6 +10,7 @@ import '../../../l10n/gen/app_localizations.dart';
 import '../../../routing/routes.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/tokens.dart';
+import '../../../theme/widgets/amount_text.dart';
 import '../data/wallet_repository.dart';
 import '../domain/wallet_summary.dart';
 import 'wallet_type_ui.dart';
@@ -112,7 +113,9 @@ class _SummaryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.baseline,
         textBaseline: TextBaseline.alphabetic,
         children: [
+          // Số tiền được phần rộng hơn (thu nhỏ khi vẫn thiếu chỗ), nhãn xuống dòng nếu cần.
           Expanded(
+            flex: 2,
             child: Text(
               label,
               style:
@@ -121,9 +124,11 @@ class _SummaryCard extends StatelessWidget {
           ),
           const SizedBox(width: AppSpacing.md),
           Flexible(
-            child: Text(
+            flex: 3,
+            child: AmountText(
               value,
               textAlign: TextAlign.end,
+              alignment: AlignmentDirectional.centerEnd,
               style: valueStyle ?? theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
@@ -219,9 +224,10 @@ class _WalletRowTile extends StatelessWidget {
                 ),
                 const SizedBox(width: AppSpacing.sm),
                 Flexible(
-                  child: Text(
+                  child: AmountText(
                     amount,
                     textAlign: TextAlign.end,
+                    alignment: AlignmentDirectional.centerEnd,
                     style: theme.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: balance < 0 ? colors.expenseText : null,

@@ -12,6 +12,7 @@ import '../../../l10n/gen/app_localizations.dart';
 import '../../../routing/routes.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/tokens.dart';
+import '../../../theme/widgets/amount_text.dart';
 import '../../../theme/widgets/empty_state.dart';
 import '../../../theme/widgets/swipe_action_tile.dart';
 import '../../../theme/widgets/transaction_tile.dart';
@@ -363,9 +364,10 @@ class _Summary extends ConsumerWidget {
         children: [
           Text(label, style: theme.textTheme.bodySmall),
           const SizedBox(height: 2),
-          Text(
+          AmountText(
             value,
             textAlign: TextAlign.center,
+            alignment: Alignment.center,
             style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, color: color),
           ),
         ],

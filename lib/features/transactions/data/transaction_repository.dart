@@ -235,6 +235,15 @@ final class TransactionRepository {
         ),
       );
 
+  /// Số giao dịch chưa xóa (dùng cho lời nhắc sao lưu).
+  Stream<int> watchCount() => _db
+      .customSelect(
+        'SELECT COUNT(*) AS n FROM transactions WHERE deleted_at IS NULL',
+        readsFrom: {_db.transactions},
+      )
+      .watch()
+      .map((rows) => rows.single.read<int>('n'));
+
   /// Xóa mềm (có thể [restore] — nút "Hoàn tác").
   Future<Result<void>> softDelete(TransactionId id) => _guard(() async {
     if (!await _db.transactionsDao.softDelete(id)) {

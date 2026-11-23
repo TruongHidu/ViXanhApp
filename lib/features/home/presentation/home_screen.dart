@@ -12,6 +12,7 @@ import '../../../routing/routes.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/tokens.dart';
 import '../../../theme/typography.dart';
+import '../../../theme/widgets/amount_text.dart';
 import '../../../theme/widgets/empty_state.dart';
 import '../../../theme/widgets/transaction_tile.dart';
 import '../../../theme/widgets/wallet_card.dart';
@@ -157,7 +158,7 @@ class _BalanceCard extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: AppSpacing.xs),
-            Text(
+            AmountText(
               value,
               style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600, color: fg),
             ),
@@ -183,7 +184,7 @@ class _BalanceCard extends ConsumerWidget {
                   l10n.homeTotalBalance,
                   style: theme.textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
                 ),
-                Text(
+                AmountText(
                   total == null ? ' ' : mask(formatMoney(Money(total))),
                   style: balanceStyle.copyWith(
                     color: (total ?? 0) < 0 ? colors.expenseText : balanceStyle.color,

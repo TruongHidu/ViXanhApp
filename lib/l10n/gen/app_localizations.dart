@@ -105,18 +105,6 @@ abstract class AppLocalizations {
   /// **'Tổng quan'**
   String get homeTitle;
 
-  /// Tiêu đề màn Cài đặt
-  ///
-  /// In vi, this message translates to:
-  /// **'Cài đặt'**
-  String get settingsTitle;
-
-  /// Tiêu đề nhóm chọn chế độ sáng/tối trong Cài đặt
-  ///
-  /// In vi, this message translates to:
-  /// **'Giao diện'**
-  String get themeMode;
-
   /// Chế độ giao diện theo hệ điều hành
   ///
   /// In vi, this message translates to:
@@ -230,12 +218,6 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Báo cáo sẽ hiện ở đây khi bạn có vài giao dịch.'**
   String get emptyReports;
-
-  /// Dòng giới thiệu ở màn Tài khoản khi chưa có ví
-  ///
-  /// In vi, this message translates to:
-  /// **'Quản lý ví, danh mục và cài đặt của bạn tại đây.'**
-  String get emptyAccount;
 
   /// Nút ở trang giới thiệu cuối, chuyển sang Thiết lập
   ///
@@ -1179,6 +1161,426 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Nhận từ {name}'**
   String walletTransferFrom(String name);
+
+  /// Tiêu đề màn quản lý danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục'**
+  String get categoriesTitle;
+
+  /// Nhãn trợ năng nhóm tab Chi tiêu / Thu nhập
+  ///
+  /// In vi, this message translates to:
+  /// **'Loại danh mục'**
+  String get categoryTypeTabsLabel;
+
+  /// Số danh mục con
+  ///
+  /// In vi, this message translates to:
+  /// **'{count, plural, =0{Chưa có mục con} other{{count} mục con}}'**
+  String categorySubCount(int count);
+
+  /// Nút thêm danh mục con
+  ///
+  /// In vi, this message translates to:
+  /// **'Thêm mục con'**
+  String get categoryAddChild;
+
+  /// Nút và tiêu đề bảng thêm danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Thêm danh mục'**
+  String get categoryAdd;
+
+  /// Tiêu đề bảng sửa danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Sửa danh mục'**
+  String get categoryEdit;
+
+  /// Nút sửa một danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Sửa {name}'**
+  String categoryEditTooltip(String name);
+
+  /// Tay kéo sắp xếp danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Giữ và kéo để sắp xếp {name}'**
+  String categoryDragHandle(String name);
+
+  /// Nút mở / đóng danh sách mục con
+  ///
+  /// In vi, this message translates to:
+  /// **'Xem mục con của {name}'**
+  String categoryShowChildren(String name);
+
+  /// Nhãn ô tên danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên danh mục'**
+  String get categoryNameLabel;
+
+  /// Gợi ý tên danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Ví dụ: Thú cưng'**
+  String get categoryNameHint;
+
+  /// Nhãn chọn biểu tượng
+  ///
+  /// In vi, this message translates to:
+  /// **'Biểu tượng'**
+  String get categoryIconLabel;
+
+  /// Nhãn chọn màu
+  ///
+  /// In vi, this message translates to:
+  /// **'Màu'**
+  String get categoryColorLabel;
+
+  /// Nhãn chọn danh mục cha
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục cha'**
+  String get categoryParentLabel;
+
+  /// Lựa chọn không có danh mục cha
+  ///
+  /// In vi, this message translates to:
+  /// **'Không có · đây là danh mục chính'**
+  String get categoryParentNone;
+
+  /// Giải thích vì sao không chọn được danh mục cha
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục đang có mục con nên không thể làm mục con.'**
+  String get categoryParentLocked;
+
+  /// Nút lưu danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu'**
+  String get categorySave;
+
+  /// Nút xóa danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Xóa danh mục'**
+  String get categoryDelete;
+
+  /// Tiêu đề hộp xác nhận xóa
+  ///
+  /// In vi, this message translates to:
+  /// **'Xóa danh mục {name}?'**
+  String categoryDeleteConfirmTitle(String name);
+
+  /// Nội dung hộp xác nhận xóa danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục và các mục con sẽ bị ẩn. Giao dịch cũ vẫn giữ tên danh mục.'**
+  String get categoryDeleteConfirmBody;
+
+  /// Snackbar sau khi xóa danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã xóa danh mục'**
+  String get categoryDeleted;
+
+  /// Lỗi tên danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên danh mục cần từ 1 đến 64 ký tự.'**
+  String get categoryErrorName;
+
+  /// Lỗi cấu trúc cây danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Danh mục chỉ có tối đa 2 cấp và mục con phải cùng loại với danh mục cha.'**
+  String get categoryErrorHierarchy;
+
+  /// Lỗi chung khi lưu danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa lưu được danh mục. Vui lòng thử lại.'**
+  String get categorySaveFailed;
+
+  /// Tên đọc của từng biểu tượng danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'{key, select, restaurant{Ăn uống} directions_car{Xe} home{Nhà} bolt{Điện} shopping_bag{Mua sắm} sports_esports{Giải trí} favorite{Sức khỏe} school{Sách} redeem{Quà} pets{Thú cưng} flight{Du lịch} smartphone{Điện thoại} other{Biểu tượng}}'**
+  String categoryIconName(String key);
+
+  /// Tên đọc của từng màu danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'{index, select, 0{Màu cam đào} 1{Màu xanh dương} 2{Màu tím oải hương} 3{Màu xanh ngọc} 4{Màu hồng} 5{Màu vàng} 6{Màu xanh lá} 7{Màu xanh lam nhạt} 8{Màu xanh rêu} 9{Màu vàng đất} other{Màu}}'**
+  String categoryColorName(String index);
+
+  /// Nhãn trợ năng nhóm tab Chi tiêu / Thu nhập của Báo cáo
+  ///
+  /// In vi, this message translates to:
+  /// **'Loại báo cáo'**
+  String get reportTypeGroup;
+
+  /// Nhãn trợ năng nhóm chip chọn loại kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'Kỳ báo cáo'**
+  String get reportPeriodGroup;
+
+  /// Chip kỳ theo tuần
+  ///
+  /// In vi, this message translates to:
+  /// **'Tuần'**
+  String get reportPeriodWeek;
+
+  /// Chip kỳ theo tháng
+  ///
+  /// In vi, this message translates to:
+  /// **'Tháng'**
+  String get reportPeriodMonth;
+
+  /// Chip kỳ theo năm
+  ///
+  /// In vi, this message translates to:
+  /// **'Năm'**
+  String get reportPeriodYear;
+
+  /// Chip chọn khoảng ngày tùy ý
+  ///
+  /// In vi, this message translates to:
+  /// **'Tùy chọn'**
+  String get reportPeriodCustom;
+
+  /// Nút xem kỳ trước
+  ///
+  /// In vi, this message translates to:
+  /// **'Kỳ trước'**
+  String get previousPeriod;
+
+  /// Nút xem kỳ sau
+  ///
+  /// In vi, this message translates to:
+  /// **'Kỳ sau'**
+  String get nextPeriod;
+
+  /// Nhãn kỳ năm
+  ///
+  /// In vi, this message translates to:
+  /// **'Năm {year}'**
+  String reportYearLabel(int year);
+
+  /// Nhãn tổng ở giữa biểu đồ tròn
+  ///
+  /// In vi, this message translates to:
+  /// **'{type, select, income{Tổng thu} other{Tổng chi}}'**
+  String reportTotal(String type);
+
+  /// Lát gộp các danh mục nhỏ
+  ///
+  /// In vi, this message translates to:
+  /// **'Khác'**
+  String get reportOther;
+
+  /// Nhãn trợ năng một dòng danh mục trong báo cáo
+  ///
+  /// In vi, this message translates to:
+  /// **'{name}: {amount}, {percent}%'**
+  String reportCategoryRow(String name, String amount, int percent);
+
+  /// Mô tả trợ năng của biểu đồ tròn
+  ///
+  /// In vi, this message translates to:
+  /// **'{total}. Lớn nhất: {top}'**
+  String reportDonutSummary(String total, String top);
+
+  /// Tiêu đề thẻ so sánh với kỳ trước
+  ///
+  /// In vi, this message translates to:
+  /// **'{kind, select, week{So với tuần trước} month{So với tháng trước} year{So với năm trước} other{So với kỳ trước}}'**
+  String reportCompareTitle(String kind);
+
+  /// Tên kỳ trước trong câu so sánh
+  ///
+  /// In vi, this message translates to:
+  /// **'{kind, select, week{tuần trước} month{tháng {month}} year{năm {year}} other{kỳ trước}}'**
+  String reportPreviousName(String kind, String month, String year);
+
+  /// Câu so sánh khi tăng
+  ///
+  /// In vi, this message translates to:
+  /// **'{type, select, income{Thu} other{Chi}} nhiều hơn {percent}% so với {period}'**
+  String reportCompareMore(String type, int percent, String period);
+
+  /// Câu so sánh khi giảm
+  ///
+  /// In vi, this message translates to:
+  /// **'{type, select, income{Thu} other{Chi}} ít hơn {percent}% so với {period}'**
+  String reportCompareLess(String type, int percent, String period);
+
+  /// Câu so sánh khi không đổi
+  ///
+  /// In vi, this message translates to:
+  /// **'{type, select, income{Thu} other{Chi}} bằng {period}'**
+  String reportCompareSame(String type, String period);
+
+  /// Tiêu đề biểu đồ cột thu – chi
+  ///
+  /// In vi, this message translates to:
+  /// **'{kind, select, week{Thu – chi 6 tuần} month{Thu – chi 6 tháng} year{Thu – chi 6 năm} other{Thu – chi 6 kỳ}}'**
+  String reportSeriesTitle(String kind);
+
+  /// Chi tiết một cột của biểu đồ thu – chi
+  ///
+  /// In vi, this message translates to:
+  /// **'{period}: Thu {income} · Chi {expense}'**
+  String reportSeriesDetail(String period, String income, String expense);
+
+  /// Trạng thái trống của biểu đồ danh mục
+  ///
+  /// In vi, this message translates to:
+  /// **'{type, select, income{Chưa có khoản thu nào trong kỳ này.} other{Chưa có khoản chi nào trong kỳ này.}}'**
+  String reportEmpty(String type);
+
+  /// Tiêu đề danh sách giao dịch của một danh mục trong kỳ
+  ///
+  /// In vi, this message translates to:
+  /// **'{name} · {period}'**
+  String reportCategoryTitle(String name, String period);
+
+  /// Tên hiển thị khi người dùng chưa đặt tên
+  ///
+  /// In vi, this message translates to:
+  /// **'Bạn'**
+  String get accountDefaultName;
+
+  /// Nút/tiêu đề hộp thoại sửa tên ở thẻ hồ sơ
+  ///
+  /// In vi, this message translates to:
+  /// **'Sửa tên'**
+  String get accountEditName;
+
+  /// Gợi ý ô nhập tên
+  ///
+  /// In vi, this message translates to:
+  /// **'Tên của bạn'**
+  String get accountNameHint;
+
+  /// Nút lưu trong hộp thoại sửa tên
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu'**
+  String get accountSave;
+
+  /// Dòng trạng thái sao lưu trên thẻ hồ sơ
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã sao lưu lúc {time}'**
+  String accountBackedUpAt(String time);
+
+  /// Chưa có bản sao lưu nào
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa sao lưu'**
+  String get accountNotBackedUp;
+
+  /// Tiêu đề nhóm Quản lý
+  ///
+  /// In vi, this message translates to:
+  /// **'Quản lý'**
+  String get accountGroupManage;
+
+  /// Tiêu đề nhóm Giao diện
+  ///
+  /// In vi, this message translates to:
+  /// **'Giao diện'**
+  String get accountGroupAppearance;
+
+  /// Tiêu đề nhóm Dữ liệu
+  ///
+  /// In vi, this message translates to:
+  /// **'Dữ liệu'**
+  String get accountGroupData;
+
+  /// Tiêu đề nhóm Khác
+  ///
+  /// In vi, this message translates to:
+  /// **'Khác'**
+  String get accountGroupOther;
+
+  /// Số ví đang dùng
+  ///
+  /// In vi, this message translates to:
+  /// **'{count} ví'**
+  String accountWalletCount(int count);
+
+  /// Dòng chọn sáng/tối/theo hệ thống
+  ///
+  /// In vi, this message translates to:
+  /// **'Chế độ tối'**
+  String get accountDarkMode;
+
+  /// Dòng chọn ngày bắt đầu tháng tài chính
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngày bắt đầu tháng'**
+  String get accountMonthStart;
+
+  /// Giá trị ngày bắt đầu tháng
+  ///
+  /// In vi, this message translates to:
+  /// **'Ngày {day}'**
+  String accountMonthStartValue(int day);
+
+  /// Công tắc ẩn số dư
+  ///
+  /// In vi, this message translates to:
+  /// **'Ẩn số dư khi mở app'**
+  String get accountHideBalance;
+
+  /// Dòng xuất file sao lưu
+  ///
+  /// In vi, this message translates to:
+  /// **'Sao lưu'**
+  String get accountBackup;
+
+  /// Giá trị dòng Sao lưu khi chưa sao lưu
+  ///
+  /// In vi, this message translates to:
+  /// **'Chưa có'**
+  String get accountBackupNever;
+
+  /// Ghi chú dưới nhóm Dữ liệu
+  ///
+  /// In vi, this message translates to:
+  /// **'Lưu file sao lưu lên Drive, Zalo hoặc máy để không mất dữ liệu.'**
+  String get accountBackupHint;
+
+  /// Dòng nhắc sao lưu khi có nhiều giao dịch và quá 7 ngày chưa sao lưu
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã lâu chưa sao lưu. Sao lưu ngay để giữ an toàn dữ liệu nhé.'**
+  String get accountBackupReminder;
+
+  /// Snackbar khi sao lưu xong
+  ///
+  /// In vi, this message translates to:
+  /// **'Đã tạo bản sao lưu'**
+  String get accountBackupDone;
+
+  /// Snackbar khi sao lưu lỗi
+  ///
+  /// In vi, this message translates to:
+  /// **'Không sao lưu được. Vui lòng thử lại.'**
+  String get accountBackupFailed;
+
+  /// Dòng phiên bản app
+  ///
+  /// In vi, this message translates to:
+  /// **'Phiên bản'**
+  String get accountVersion;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

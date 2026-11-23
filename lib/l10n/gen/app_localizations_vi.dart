@@ -15,12 +15,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeTitle => 'Tổng quan';
 
   @override
-  String get settingsTitle => 'Cài đặt';
-
-  @override
-  String get themeMode => 'Giao diện';
-
-  @override
   String get themeSystem => 'Theo hệ thống';
 
   @override
@@ -76,9 +70,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get emptyReports => 'Báo cáo sẽ hiện ở đây khi bạn có vài giao dịch.';
-
-  @override
-  String get emptyAccount => 'Quản lý ví, danh mục và cài đặt của bạn tại đây.';
 
   @override
   String get onboardingStart => 'Bắt đầu';
@@ -611,4 +602,323 @@ class AppLocalizationsVi extends AppLocalizations {
   String walletTransferFrom(String name) {
     return 'Nhận từ $name';
   }
+
+  @override
+  String get categoriesTitle => 'Danh mục';
+
+  @override
+  String get categoryTypeTabsLabel => 'Loại danh mục';
+
+  @override
+  String categorySubCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count mục con',
+      zero: 'Chưa có mục con',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get categoryAddChild => 'Thêm mục con';
+
+  @override
+  String get categoryAdd => 'Thêm danh mục';
+
+  @override
+  String get categoryEdit => 'Sửa danh mục';
+
+  @override
+  String categoryEditTooltip(String name) {
+    return 'Sửa $name';
+  }
+
+  @override
+  String categoryDragHandle(String name) {
+    return 'Giữ và kéo để sắp xếp $name';
+  }
+
+  @override
+  String categoryShowChildren(String name) {
+    return 'Xem mục con của $name';
+  }
+
+  @override
+  String get categoryNameLabel => 'Tên danh mục';
+
+  @override
+  String get categoryNameHint => 'Ví dụ: Thú cưng';
+
+  @override
+  String get categoryIconLabel => 'Biểu tượng';
+
+  @override
+  String get categoryColorLabel => 'Màu';
+
+  @override
+  String get categoryParentLabel => 'Danh mục cha';
+
+  @override
+  String get categoryParentNone => 'Không có · đây là danh mục chính';
+
+  @override
+  String get categoryParentLocked => 'Danh mục đang có mục con nên không thể làm mục con.';
+
+  @override
+  String get categorySave => 'Lưu';
+
+  @override
+  String get categoryDelete => 'Xóa danh mục';
+
+  @override
+  String categoryDeleteConfirmTitle(String name) {
+    return 'Xóa danh mục $name?';
+  }
+
+  @override
+  String get categoryDeleteConfirmBody =>
+      'Danh mục và các mục con sẽ bị ẩn. Giao dịch cũ vẫn giữ tên danh mục.';
+
+  @override
+  String get categoryDeleted => 'Đã xóa danh mục';
+
+  @override
+  String get categoryErrorName => 'Tên danh mục cần từ 1 đến 64 ký tự.';
+
+  @override
+  String get categoryErrorHierarchy =>
+      'Danh mục chỉ có tối đa 2 cấp và mục con phải cùng loại với danh mục cha.';
+
+  @override
+  String get categorySaveFailed => 'Chưa lưu được danh mục. Vui lòng thử lại.';
+
+  @override
+  String categoryIconName(String key) {
+    String _temp0 = intl.Intl.selectLogic(key, {
+      'restaurant': 'Ăn uống',
+      'directions_car': 'Xe',
+      'home': 'Nhà',
+      'bolt': 'Điện',
+      'shopping_bag': 'Mua sắm',
+      'sports_esports': 'Giải trí',
+      'favorite': 'Sức khỏe',
+      'school': 'Sách',
+      'redeem': 'Quà',
+      'pets': 'Thú cưng',
+      'flight': 'Du lịch',
+      'smartphone': 'Điện thoại',
+      'other': 'Biểu tượng',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String categoryColorName(String index) {
+    String _temp0 = intl.Intl.selectLogic(index, {
+      '0': 'Màu cam đào',
+      '1': 'Màu xanh dương',
+      '2': 'Màu tím oải hương',
+      '3': 'Màu xanh ngọc',
+      '4': 'Màu hồng',
+      '5': 'Màu vàng',
+      '6': 'Màu xanh lá',
+      '7': 'Màu xanh lam nhạt',
+      '8': 'Màu xanh rêu',
+      '9': 'Màu vàng đất',
+      'other': 'Màu',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get reportTypeGroup => 'Loại báo cáo';
+
+  @override
+  String get reportPeriodGroup => 'Kỳ báo cáo';
+
+  @override
+  String get reportPeriodWeek => 'Tuần';
+
+  @override
+  String get reportPeriodMonth => 'Tháng';
+
+  @override
+  String get reportPeriodYear => 'Năm';
+
+  @override
+  String get reportPeriodCustom => 'Tùy chọn';
+
+  @override
+  String get previousPeriod => 'Kỳ trước';
+
+  @override
+  String get nextPeriod => 'Kỳ sau';
+
+  @override
+  String reportYearLabel(int year) {
+    return 'Năm $year';
+  }
+
+  @override
+  String reportTotal(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {'income': 'Tổng thu', 'other': 'Tổng chi'});
+    return '$_temp0';
+  }
+
+  @override
+  String get reportOther => 'Khác';
+
+  @override
+  String reportCategoryRow(String name, String amount, int percent) {
+    return '$name: $amount, $percent%';
+  }
+
+  @override
+  String reportDonutSummary(String total, String top) {
+    return '$total. Lớn nhất: $top';
+  }
+
+  @override
+  String reportCompareTitle(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'week': 'So với tuần trước',
+      'month': 'So với tháng trước',
+      'year': 'So với năm trước',
+      'other': 'So với kỳ trước',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String reportPreviousName(String kind, String month, String year) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'week': 'tuần trước',
+      'month': 'tháng $month',
+      'year': 'năm $year',
+      'other': 'kỳ trước',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String reportCompareMore(String type, int percent, String period) {
+    String _temp0 = intl.Intl.selectLogic(type, {'income': 'Thu', 'other': 'Chi'});
+    return '$_temp0 nhiều hơn $percent% so với $period';
+  }
+
+  @override
+  String reportCompareLess(String type, int percent, String period) {
+    String _temp0 = intl.Intl.selectLogic(type, {'income': 'Thu', 'other': 'Chi'});
+    return '$_temp0 ít hơn $percent% so với $period';
+  }
+
+  @override
+  String reportCompareSame(String type, String period) {
+    String _temp0 = intl.Intl.selectLogic(type, {'income': 'Thu', 'other': 'Chi'});
+    return '$_temp0 bằng $period';
+  }
+
+  @override
+  String reportSeriesTitle(String kind) {
+    String _temp0 = intl.Intl.selectLogic(kind, {
+      'week': 'Thu – chi 6 tuần',
+      'month': 'Thu – chi 6 tháng',
+      'year': 'Thu – chi 6 năm',
+      'other': 'Thu – chi 6 kỳ',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String reportSeriesDetail(String period, String income, String expense) {
+    return '$period: Thu $income · Chi $expense';
+  }
+
+  @override
+  String reportEmpty(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {
+      'income': 'Chưa có khoản thu nào trong kỳ này.',
+      'other': 'Chưa có khoản chi nào trong kỳ này.',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String reportCategoryTitle(String name, String period) {
+    return '$name · $period';
+  }
+
+  @override
+  String get accountDefaultName => 'Bạn';
+
+  @override
+  String get accountEditName => 'Sửa tên';
+
+  @override
+  String get accountNameHint => 'Tên của bạn';
+
+  @override
+  String get accountSave => 'Lưu';
+
+  @override
+  String accountBackedUpAt(String time) {
+    return 'Đã sao lưu lúc $time';
+  }
+
+  @override
+  String get accountNotBackedUp => 'Chưa sao lưu';
+
+  @override
+  String get accountGroupManage => 'Quản lý';
+
+  @override
+  String get accountGroupAppearance => 'Giao diện';
+
+  @override
+  String get accountGroupData => 'Dữ liệu';
+
+  @override
+  String get accountGroupOther => 'Khác';
+
+  @override
+  String accountWalletCount(int count) {
+    return '$count ví';
+  }
+
+  @override
+  String get accountDarkMode => 'Chế độ tối';
+
+  @override
+  String get accountMonthStart => 'Ngày bắt đầu tháng';
+
+  @override
+  String accountMonthStartValue(int day) {
+    return 'Ngày $day';
+  }
+
+  @override
+  String get accountHideBalance => 'Ẩn số dư khi mở app';
+
+  @override
+  String get accountBackup => 'Sao lưu';
+
+  @override
+  String get accountBackupNever => 'Chưa có';
+
+  @override
+  String get accountBackupHint => 'Lưu file sao lưu lên Drive, Zalo hoặc máy để không mất dữ liệu.';
+
+  @override
+  String get accountBackupReminder =>
+      'Đã lâu chưa sao lưu. Sao lưu ngay để giữ an toàn dữ liệu nhé.';
+
+  @override
+  String get accountBackupDone => 'Đã tạo bản sao lưu';
+
+  @override
+  String get accountBackupFailed => 'Không sao lưu được. Vui lòng thử lại.';
+
+  @override
+  String get accountVersion => 'Phiên bản';
 }

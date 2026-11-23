@@ -8,15 +8,18 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'app.dart';
 import 'data/database.dart';
+import 'features/backup/data/backup_status_store.dart';
 import 'features/settings/data/settings_repository.dart';
 import 'features/transactions/data/last_wallet_store.dart';
 import 'native/bank_notification_channel.dart';
+import 'services/app_info_service.dart';
 import 'services/auth_service.dart';
 import 'services/backup_service.dart';
 import 'services/bank_listener_service.dart';
 import 'services/crash_log.dart';
 import 'services/key_value_store.dart';
 import 'services/notification_service.dart';
+import 'services/share_service.dart';
 import 'services/sync_service.dart';
 
 /// Composition root — nơi DUY NHẤT gọi tên các implementation cụ thể.
@@ -55,6 +58,8 @@ Future<void> bootstrap() async {
         ),
         authServiceProvider.overrideWithValue(const GuestAuthService()),
         syncServiceProvider.overrideWithValue(const DisabledSyncService()),
+        shareServiceProvider.overrideWithValue(const SharePlusShareService()),
+        appInfoServiceProvider.overrideWithValue(const PackageAppInfoService()),
       ],
       child: const App(),
     ),
@@ -78,7 +83,7 @@ Future<void> bootstrap() async {
 Future<KeyValueStore> _openKeyValueStore(CrashLog log) async {
   try {
     return await SharedPrefsKeyValueStore.create(
-      allowList: {...SettingsRepository.keys, ...LastWalletStore.keys},
+      allowList: {...SettingsRepository.keys, ...LastWalletStore.keys, ...BackupStatusStore.keys},
     );
   } catch (e, s) {
     log.record('Không mở được shared_preferences: $e', s);

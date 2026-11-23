@@ -172,6 +172,20 @@ abstract final class AppSizes {
 abstract final class CategoryPalette {
   static const fallback = Color(0xFFB5B5B5);
 
+  /// Màu người dùng chọn khi tạo / sửa danh mục (pastel, theo thiết kế).
+  static const choices = [
+    Color(0xFFE8A87C),
+    Color(0xFF7FA7D9),
+    Color(0xFFA99BD6),
+    Color(0xFF6FB7B7),
+    Color(0xFFE59AB0),
+    Color(0xFFF0C66B),
+    Color(0xFF8CC79A),
+    Color(0xFF9BB0E0),
+    Color(0xFF5FAE8C),
+    Color(0xFFC9B26B),
+  ];
+
   static const bySystemKey = <String, Color>{
     'an_uong': Color(0xFFE8A87C),
     'di_chuyen': Color(0xFF7FA7D9),

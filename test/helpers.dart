@@ -11,11 +11,13 @@ import 'package:vi_xanh_app/core/ids.dart';
 import 'package:vi_xanh_app/data/database.dart';
 import 'package:vi_xanh_app/data/sql_functions.dart';
 import 'package:vi_xanh_app/features/settings/data/settings_repository.dart';
+import 'package:vi_xanh_app/services/app_info_service.dart';
 import 'package:vi_xanh_app/services/auth_service.dart';
 import 'package:vi_xanh_app/services/backup_service.dart';
 import 'package:vi_xanh_app/services/bank_listener_service.dart';
 import 'package:vi_xanh_app/services/key_value_store.dart';
 import 'package:vi_xanh_app/services/notification_service.dart';
+import 'package:vi_xanh_app/services/share_service.dart';
 import 'package:vi_xanh_app/services/sync_service.dart';
 
 import 'fakes/fakes.dart';
@@ -31,7 +33,13 @@ AppDatabase inMemoryDatabase({Clock? clock, IdGenerator? ids}) => AppDatabase(
 
 /// Cùng seam DI với bootstrap(): override ĐỦ mọi provider hạ tầng bằng fake/noop,
 /// để test không bao giờ chạm platform channel hay file thật.
-List<Override> testOverrides({required AppDatabase db, KeyValueStore? store, Clock? clock}) {
+List<Override> testOverrides({
+  required AppDatabase db,
+  KeyValueStore? store,
+  Clock? clock,
+  BackupService? backup,
+  ShareService? share,
+}) {
   final kv = store ?? FakeKeyValueStore();
   final settings = SettingsRepository(kv)..load();
   return [
@@ -40,15 +48,23 @@ List<Override> testOverrides({required AppDatabase db, KeyValueStore? store, Clo
     keyValueStoreProvider.overrideWithValue(kv),
     settingsRepositoryProvider.overrideWithValue(settings),
     notificationServiceProvider.overrideWithValue(const NoopNotificationService()),
-    backupServiceProvider.overrideWithValue(FakeBackupService()),
+    backupServiceProvider.overrideWithValue(backup ?? FakeBackupService()),
     bankListenerServiceProvider.overrideWithValue(FakeBankListenerService()),
     authServiceProvider.overrideWithValue(const GuestAuthService()),
     syncServiceProvider.overrideWithValue(const DisabledSyncService()),
+    shareServiceProvider.overrideWithValue(share ?? FakeShareService()),
+    appInfoServiceProvider.overrideWithValue(const FakeAppInfoService()),
   ];
 }
 
-Widget buildTestApp(AppDatabase db, {KeyValueStore? store, Clock? clock}) => ProviderScope(
-  overrides: testOverrides(db: db, store: store, clock: clock),
+Widget buildTestApp(
+  AppDatabase db, {
+  KeyValueStore? store,
+  Clock? clock,
+  BackupService? backup,
+  ShareService? share,
+}) => ProviderScope(
+  overrides: testOverrides(db: db, store: store, clock: clock, backup: backup, share: share),
   child: const App(),
 );
 

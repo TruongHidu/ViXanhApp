@@ -8,14 +8,6 @@
   "@homeTitle": {
     "description": "Tiêu đề màn Tổng quan"
   },
-  "settingsTitle": "Cài đặt",
-  "@settingsTitle": {
-    "description": "Tiêu đề màn Cài đặt"
-  },
-  "themeMode": "Giao diện",
-  "@themeMode": {
-    "description": "Tiêu đề nhóm chọn chế độ sáng/tối trong Cài đặt"
-  },
   "themeSystem": "Theo hệ thống",
   "@themeSystem": {
     "description": "Chế độ giao diện theo hệ điều hành"
@@ -91,10 +83,6 @@
   "emptyReports": "Báo cáo sẽ hiện ở đây khi bạn có vài giao dịch.",
   "@emptyReports": {
     "description": "Trạng thái trống của màn Báo cáo"
-  },
-  "emptyAccount": "Quản lý ví, danh mục và cài đặt của bạn tại đây.",
-  "@emptyAccount": {
-    "description": "Dòng giới thiệu ở màn Tài khoản khi chưa có ví"
   },
   "onboardingStart": "Bắt đầu",
   "@onboardingStart": {
@@ -879,5 +867,439 @@
         "type": "String"
       }
     }
+  },
+  "categoriesTitle": "Danh mục",
+  "@categoriesTitle": {
+    "description": "Tiêu đề màn quản lý danh mục"
+  },
+  "categoryTypeTabsLabel": "Loại danh mục",
+  "@categoryTypeTabsLabel": {
+    "description": "Nhãn trợ năng nhóm tab Chi tiêu / Thu nhập"
+  },
+  "categorySubCount": "{count, plural, =0{Chưa có mục con} other{{count} mục con}}",
+  "@categorySubCount": {
+    "description": "Số danh mục con",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryAddChild": "Thêm mục con",
+  "@categoryAddChild": {
+    "description": "Nút thêm danh mục con"
+  },
+  "categoryAdd": "Thêm danh mục",
+  "@categoryAdd": {
+    "description": "Nút và tiêu đề bảng thêm danh mục"
+  },
+  "categoryEdit": "Sửa danh mục",
+  "@categoryEdit": {
+    "description": "Tiêu đề bảng sửa danh mục"
+  },
+  "categoryEditTooltip": "Sửa {name}",
+  "@categoryEditTooltip": {
+    "description": "Nút sửa một danh mục",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryDragHandle": "Giữ và kéo để sắp xếp {name}",
+  "@categoryDragHandle": {
+    "description": "Tay kéo sắp xếp danh mục",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryShowChildren": "Xem mục con của {name}",
+  "@categoryShowChildren": {
+    "description": "Nút mở / đóng danh sách mục con",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryNameLabel": "Tên danh mục",
+  "@categoryNameLabel": {
+    "description": "Nhãn ô tên danh mục"
+  },
+  "categoryNameHint": "Ví dụ: Thú cưng",
+  "@categoryNameHint": {
+    "description": "Gợi ý tên danh mục"
+  },
+  "categoryIconLabel": "Biểu tượng",
+  "@categoryIconLabel": {
+    "description": "Nhãn chọn biểu tượng"
+  },
+  "categoryColorLabel": "Màu",
+  "@categoryColorLabel": {
+    "description": "Nhãn chọn màu"
+  },
+  "categoryParentLabel": "Danh mục cha",
+  "@categoryParentLabel": {
+    "description": "Nhãn chọn danh mục cha"
+  },
+  "categoryParentNone": "Không có · đây là danh mục chính",
+  "@categoryParentNone": {
+    "description": "Lựa chọn không có danh mục cha"
+  },
+  "categoryParentLocked": "Danh mục đang có mục con nên không thể làm mục con.",
+  "@categoryParentLocked": {
+    "description": "Giải thích vì sao không chọn được danh mục cha"
+  },
+  "categorySave": "Lưu",
+  "@categorySave": {
+    "description": "Nút lưu danh mục"
+  },
+  "categoryDelete": "Xóa danh mục",
+  "@categoryDelete": {
+    "description": "Nút xóa danh mục"
+  },
+  "categoryDeleteConfirmTitle": "Xóa danh mục {name}?",
+  "@categoryDeleteConfirmTitle": {
+    "description": "Tiêu đề hộp xác nhận xóa",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryDeleteConfirmBody": "Danh mục và các mục con sẽ bị ẩn. Giao dịch cũ vẫn giữ tên danh mục.",
+  "@categoryDeleteConfirmBody": {
+    "description": "Nội dung hộp xác nhận xóa danh mục"
+  },
+  "categoryDeleted": "Đã xóa danh mục",
+  "@categoryDeleted": {
+    "description": "Snackbar sau khi xóa danh mục"
+  },
+  "categoryErrorName": "Tên danh mục cần từ 1 đến 64 ký tự.",
+  "@categoryErrorName": {
+    "description": "Lỗi tên danh mục"
+  },
+  "categoryErrorHierarchy": "Danh mục chỉ có tối đa 2 cấp và mục con phải cùng loại với danh mục cha.",
+  "@categoryErrorHierarchy": {
+    "description": "Lỗi cấu trúc cây danh mục"
+  },
+  "categorySaveFailed": "Chưa lưu được danh mục. Vui lòng thử lại.",
+  "@categorySaveFailed": {
+    "description": "Lỗi chung khi lưu danh mục"
+  },
+  "categoryIconName": "{key, select, restaurant{Ăn uống} directions_car{Xe} home{Nhà} bolt{Điện} shopping_bag{Mua sắm} sports_esports{Giải trí} favorite{Sức khỏe} school{Sách} redeem{Quà} pets{Thú cưng} flight{Du lịch} smartphone{Điện thoại} other{Biểu tượng}}",
+  "@categoryIconName": {
+    "description": "Tên đọc của từng biểu tượng danh mục",
+    "placeholders": {
+      "key": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryColorName": "{index, select, 0{Màu cam đào} 1{Màu xanh dương} 2{Màu tím oải hương} 3{Màu xanh ngọc} 4{Màu hồng} 5{Màu vàng} 6{Màu xanh lá} 7{Màu xanh lam nhạt} 8{Màu xanh rêu} 9{Màu vàng đất} other{Màu}}",
+  "@categoryColorName": {
+    "description": "Tên đọc của từng màu danh mục",
+    "placeholders": {
+      "index": {
+        "type": "String"
+      }
+    }
+  },
+  "reportTypeGroup": "Loại báo cáo",
+  "@reportTypeGroup": {
+    "description": "Nhãn trợ năng nhóm tab Chi tiêu / Thu nhập của Báo cáo"
+  },
+  "reportPeriodGroup": "Kỳ báo cáo",
+  "@reportPeriodGroup": {
+    "description": "Nhãn trợ năng nhóm chip chọn loại kỳ"
+  },
+  "reportPeriodWeek": "Tuần",
+  "@reportPeriodWeek": {
+    "description": "Chip kỳ theo tuần"
+  },
+  "reportPeriodMonth": "Tháng",
+  "@reportPeriodMonth": {
+    "description": "Chip kỳ theo tháng"
+  },
+  "reportPeriodYear": "Năm",
+  "@reportPeriodYear": {
+    "description": "Chip kỳ theo năm"
+  },
+  "reportPeriodCustom": "Tùy chọn",
+  "@reportPeriodCustom": {
+    "description": "Chip chọn khoảng ngày tùy ý"
+  },
+  "previousPeriod": "Kỳ trước",
+  "@previousPeriod": {
+    "description": "Nút xem kỳ trước"
+  },
+  "nextPeriod": "Kỳ sau",
+  "@nextPeriod": {
+    "description": "Nút xem kỳ sau"
+  },
+  "reportYearLabel": "Năm {year}",
+  "@reportYearLabel": {
+    "description": "Nhãn kỳ năm",
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "reportTotal": "{type, select, income{Tổng thu} other{Tổng chi}}",
+  "@reportTotal": {
+    "description": "Nhãn tổng ở giữa biểu đồ tròn",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "reportOther": "Khác",
+  "@reportOther": {
+    "description": "Lát gộp các danh mục nhỏ"
+  },
+  "reportCategoryRow": "{name}: {amount}, {percent}%",
+  "@reportCategoryRow": {
+    "description": "Nhãn trợ năng một dòng danh mục trong báo cáo",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "reportDonutSummary": "{total}. Lớn nhất: {top}",
+  "@reportDonutSummary": {
+    "description": "Mô tả trợ năng của biểu đồ tròn",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "top": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCompareTitle": "{kind, select, week{So với tuần trước} month{So với tháng trước} year{So với năm trước} other{So với kỳ trước}}",
+  "@reportCompareTitle": {
+    "description": "Tiêu đề thẻ so sánh với kỳ trước",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "reportPreviousName": "{kind, select, week{tuần trước} month{tháng {month}} year{năm {year}} other{kỳ trước}}",
+  "@reportPreviousName": {
+    "description": "Tên kỳ trước trong câu so sánh",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCompareMore": "{type, select, income{Thu} other{Chi}} nhiều hơn {percent}% so với {period}",
+  "@reportCompareMore": {
+    "description": "Câu so sánh khi tăng",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCompareLess": "{type, select, income{Thu} other{Chi}} ít hơn {percent}% so với {period}",
+  "@reportCompareLess": {
+    "description": "Câu so sánh khi giảm",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCompareSame": "{type, select, income{Thu} other{Chi}} bằng {period}",
+  "@reportCompareSame": {
+    "description": "Câu so sánh khi không đổi",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "reportSeriesTitle": "{kind, select, week{Thu – chi 6 tuần} month{Thu – chi 6 tháng} year{Thu – chi 6 năm} other{Thu – chi 6 kỳ}}",
+  "@reportSeriesTitle": {
+    "description": "Tiêu đề biểu đồ cột thu – chi",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "reportSeriesDetail": "{period}: Thu {income} · Chi {expense}",
+  "@reportSeriesDetail": {
+    "description": "Chi tiết một cột của biểu đồ thu – chi",
+    "placeholders": {
+      "period": {
+        "type": "String"
+      },
+      "income": {
+        "type": "String"
+      },
+      "expense": {
+        "type": "String"
+      }
+    }
+  },
+  "reportEmpty": "{type, select, income{Chưa có khoản thu nào trong kỳ này.} other{Chưa có khoản chi nào trong kỳ này.}}",
+  "@reportEmpty": {
+    "description": "Trạng thái trống của biểu đồ danh mục",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCategoryTitle": "{name} · {period}",
+  "@reportCategoryTitle": {
+    "description": "Tiêu đề danh sách giao dịch của một danh mục trong kỳ",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "accountDefaultName": "Bạn",
+  "@accountDefaultName": {
+    "description": "Tên hiển thị khi người dùng chưa đặt tên"
+  },
+  "accountEditName": "Sửa tên",
+  "@accountEditName": {
+    "description": "Nút/tiêu đề hộp thoại sửa tên ở thẻ hồ sơ"
+  },
+  "accountNameHint": "Tên của bạn",
+  "@accountNameHint": {
+    "description": "Gợi ý ô nhập tên"
+  },
+  "accountSave": "Lưu",
+  "@accountSave": {
+    "description": "Nút lưu trong hộp thoại sửa tên"
+  },
+  "accountBackedUpAt": "Đã sao lưu lúc {time}",
+  "@accountBackedUpAt": {
+    "description": "Dòng trạng thái sao lưu trên thẻ hồ sơ",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "accountNotBackedUp": "Chưa sao lưu",
+  "@accountNotBackedUp": {
+    "description": "Chưa có bản sao lưu nào"
+  },
+  "accountGroupManage": "Quản lý",
+  "@accountGroupManage": {
+    "description": "Tiêu đề nhóm Quản lý"
+  },
+  "accountGroupAppearance": "Giao diện",
+  "@accountGroupAppearance": {
+    "description": "Tiêu đề nhóm Giao diện"
+  },
+  "accountGroupData": "Dữ liệu",
+  "@accountGroupData": {
+    "description": "Tiêu đề nhóm Dữ liệu"
+  },
+  "accountGroupOther": "Khác",
+  "@accountGroupOther": {
+    "description": "Tiêu đề nhóm Khác"
+  },
+  "accountWalletCount": "{count} ví",
+  "@accountWalletCount": {
+    "description": "Số ví đang dùng",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountDarkMode": "Chế độ tối",
+  "@accountDarkMode": {
+    "description": "Dòng chọn sáng/tối/theo hệ thống"
+  },
+  "accountMonthStart": "Ngày bắt đầu tháng",
+  "@accountMonthStart": {
+    "description": "Dòng chọn ngày bắt đầu tháng tài chính"
+  },
+  "accountMonthStartValue": "Ngày {day}",
+  "@accountMonthStartValue": {
+    "description": "Giá trị ngày bắt đầu tháng",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "accountHideBalance": "Ẩn số dư khi mở app",
+  "@accountHideBalance": {
+    "description": "Công tắc ẩn số dư"
+  },
+  "accountBackup": "Sao lưu",
+  "@accountBackup": {
+    "description": "Dòng xuất file sao lưu"
+  },
+  "accountBackupNever": "Chưa có",
+  "@accountBackupNever": {
+    "description": "Giá trị dòng Sao lưu khi chưa sao lưu"
+  },
+  "accountBackupHint": "Lưu file sao lưu lên Drive, Zalo hoặc máy để không mất dữ liệu.",
+  "@accountBackupHint": {
+    "description": "Ghi chú dưới nhóm Dữ liệu"
+  },
+  "accountBackupReminder": "Đã lâu chưa sao lưu. Sao lưu ngay để giữ an toàn dữ liệu nhé.",
+  "@accountBackupReminder": {
+    "description": "Dòng nhắc sao lưu khi có nhiều giao dịch và quá 7 ngày chưa sao lưu"
+  },
+  "accountBackupDone": "Đã tạo bản sao lưu",
+  "@accountBackupDone": {
+    "description": "Snackbar khi sao lưu xong"
+  },
+  "accountBackupFailed": "Không sao lưu được. Vui lòng thử lại.",
+  "@accountBackupFailed": {
+    "description": "Snackbar khi sao lưu lỗi"
+  },
+  "accountVersion": "Phiên bản",
+  "@accountVersion": {
+    "description": "Dòng phiên bản app"
   }
 }

@@ -21,9 +21,28 @@ const categoryIcons = <String, IconData>{
   'wifi': Icons.wifi_rounded,
   'storefront': Icons.storefront_rounded,
   'trending_up': Icons.trending_up_rounded,
+  'pets': Icons.pets_rounded,
+  'flight': Icons.flight_rounded,
+  'smartphone': Icons.smartphone_rounded,
 };
 
 /// Icon dự phòng cho khóa lạ (ví dụ dữ liệu từ bản app mới hơn).
 const fallbackCategoryIcon = Icons.category_rounded;
 
 IconData categoryIcon(String key) => categoryIcons[key] ?? fallbackCategoryIcon;
+
+/// Biểu tượng người dùng chọn khi tạo / sửa danh mục (theo thiết kế, 12 ô).
+const categoryIconChoices = [
+  'restaurant',
+  'directions_car',
+  'home',
+  'bolt',
+  'shopping_bag',
+  'sports_esports',
+  'favorite',
+  'school',
+  'redeem',
+  'pets',
+  'flight',
+  'smartphone',
+];

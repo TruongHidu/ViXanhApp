@@ -8,10 +8,6 @@ abstract final class Routes {
   static const reports = '/reports';
   static const account = '/account';
 
-  /// Con của [account] (đoạn path tương đối: [settingsSegment]).
-  static const settings = '/account/settings';
-  static const settingsSegment = 'settings';
-
   /// Mở toàn màn hình, che thanh điều hướng.
   static const addTransaction = '/add';
 
@@ -36,6 +32,31 @@ abstract final class Routes {
   /// Chi tiết ví: con của [wallets] (đoạn path tương đối [walletDetailSegment]).
   static String walletDetail(String id) => '$wallets/$id';
   static const walletDetailSegment = ':id';
+
+  /// Giao dịch của một danh mục trong một kỳ (từ Báo cáo); mở phủ lên tab.
+  static String reportCategory(
+    String categoryId, {
+    required DateTime from,
+    required DateTime to,
+    required String type,
+    required String title,
+  }) => Uri(
+    path: '$reports/category/$categoryId',
+    queryParameters: {
+      fromParam: '${from.millisecondsSinceEpoch}',
+      toParam: '${to.millisecondsSinceEpoch}',
+      typeParam: type,
+      titleParam: title,
+    },
+  ).toString();
+  static const reportCategorySegment = 'category/:id';
+  static const fromParam = 'from';
+  static const toParam = 'to';
+  static const titleParam = 'title';
+
+  /// Quản lý danh mục: con của [account]; mở phủ lên tab.
+  static const categories = '$account/$categoriesSegment';
+  static const categoriesSegment = 'categories';
 
   /// Thêm / sửa ví: toàn màn hình.
   static const newWallet = '/wallet-form';
